@@ -1,7 +1,7 @@
 # vMCShop
 Nowy wymiar automatycznego sklepu Minecraft!
 
-Aktualna wersja: **1.6-Beta** (Jeszcze nie nadaje się do użytku)
+Aktualna wersja: **1.6.pre_relase_1** (Jeszcze nie nadaje się do użytku)
 
 Demo: [Klik](https://vmcshop.pro/) (Jeszcze niedostępne :C)
 
