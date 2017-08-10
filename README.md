@@ -16,6 +16,7 @@ Demo: [Klik](https://vmcshop.pro/) (Jeszcze niedostępne :C)
 - [x] Dodawanie i usuwanie usług
 - [x] Dodawanie i usuwanie newsów
 - [x] Historia zakupów
+- [ ] Instalator sklepu
 - [ ] Realizacja zakupów
 - [ ] Obsługa voucherów
 - [ ] Logi panelu administratora
