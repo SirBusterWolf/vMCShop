@@ -16,13 +16,15 @@ Demo: [Klik](https://vmcshop.pro/) (Jeszcze niedostępne :C)
 - [x] Dodawanie i usuwanie usług
 - [x] Dodawanie i usuwanie newsów
 - [x] Historia zakupów
+- [x] Realizacja zakupów
+- [ ] Możliwość edycji serwerów, usług i newsów (Aktualnie można tylko dodawać i usuwać)
 - [ ] Instalator sklepu
-- [ ] Realizacja zakupów
 - [ ] Obsługa voucherów
 - [ ] Logi panelu administratora
 - [ ] Ustawienia strony
 - [ ] Własne podstrony
 - [ ] Własne zakładki w menu
+- [ ] Anty-bot (Weryfikacja nicku gracza poprzez wysyłanie odpowiedniej komendy do serwera)
 
 ### Instalacja
 
