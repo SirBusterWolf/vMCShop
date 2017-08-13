@@ -16,7 +16,7 @@ Demo: [Klik](https://vmcshop.pro/) (Jeszcze niedostępne :C)
 - [x] Dodawanie i usuwanie usług
 - [x] Dodawanie i usuwanie newsów
 - [x] Historia zakupów
-- [x] Realizacja zakupów
+- [x] Realizacja zakupów (Sprawdzanie czy serwer jest włączony podczas realizacji usługi)
 - [ ] Możliwość edycji serwerów, usług i newsów (Aktualnie można tylko dodawać i usuwać)
 - [ ] Instalator sklepu
 - [ ] Obsługa voucherów
