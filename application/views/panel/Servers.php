@@ -83,27 +83,27 @@
                                     <div class="col-lg-6 col-md-12 col-xs-12 text-center">
                                         <div class="form-group label-floating is-empty text-left">
                                             <label class="control-label">Nazwa serwera</label>
-                                            <input type="text" name="serverName" class="form-control">
+                                            <input type="text" name="serverName" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
                                         <div class="form-group label-floating is-empty text-left">
                                             <label class="control-label">Adres IP serwera</label>
-                                            <input type="text" name="serverIp" class="form-control">
+                                            <input type="text" name="serverIp" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
                                         <div class="form-group label-floating is-empty text-left">
                                             <label class="control-label">Port Query serwera</label>
-                                            <input type="text" name="serverQueryPort" class="form-control">
+                                            <input type="text" name="serverQueryPort" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
                                         <div class="form-group label-floating is-empty text-left">
                                             <label class="control-label">Port RCON serwera</label>
-                                            <input type="text" name="serverRconPort" class="form-control">
+                                            <input type="text" name="serverRconPort" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
                                         <div class="form-group label-floating is-empty text-left">
                                             <label class="control-label">Hasło RCON serwera</label>
-                                            <input type="text" name="serverRconPass" class="form-control">
+                                            <input type="text" name="serverRconPass" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
                                         <br />

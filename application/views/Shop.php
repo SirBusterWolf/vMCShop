@@ -32,6 +32,38 @@
 								<h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Sklep Serwera <?php echo $server['name']; ?></h3>
 							</div>
 							<div class="row">
+                                <?php if (isset($_SESSION['messageDanger'])): ?>
+                                    <div class="col-xs-12">
+                                        <div class="alert alert-danger text-left">
+                                            <div class="container-fluid">
+                                                <div class="alert-icon">
+                                                    <i class="material-icons">error_outline</i>
+                                                </div>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                </button>
+                                                <?php echo $_SESSION['messageDanger']; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php unset($_SESSION['messageDanger']); ?>
+                                <?php endif; ?>
+                                <?php if (isset($_SESSION['messageSuccess'])): ?>
+                                    <div class="col-xs-12">
+                                        <div class="alert alert-success text-left">
+                                            <div class="container-fluid">
+                                                <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                </div>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                </button>
+                                                <?php echo $_SESSION['messageSuccess']; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php unset($_SESSION['messageSuccess']); ?>
+                                <?php endif; ?>
 								<?php foreach ($services as $service): ?>
 									<div class="col-xs-12 col-md-4">
 										<div class="card card-raised card-buy">
@@ -132,17 +164,21 @@
                                         </h6>
                                         <div class="row">
                                             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                                                <div class="form-group label-floating text-left">
-                                                    <label class="control-label">Twój nick z gry</label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group label-floating text-left">
-                                                    <label class="control-label">Otrzymany kod</label>
-                                                    <input type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-success-o"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Zakup Usługę</button>
-                                                </div>
+                                                <?php echo form_open(base_url('checkout/sms')); ?>
+                                                    <div class="form-group label-floating text-left">
+                                                        <label class="control-label">Twój nick z gry</label>
+                                                        <input type="text" name="username" class="form-control" required />
+                                                    </div>
+                                                    <div class="form-group label-floating text-left">
+                                                        <label class="control-label">Otrzymany kod</label>
+                                                        <input type="text" name="smscode" class="form-control" required />
+                                                    </div>
+                                                    <input type="hidden" name="serviceid" value="<?php echo $service['id']; ?>" />
+                                                    <input type="hidden" name="servername" value="<?php echo $server['name']; ?>" />
+                                                    <div class="form-group text-center">
+                                                        <button type="submit" class="btn btn-success-o"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Zakup Usługę</button>
+                                                    </div>
+                                                <?php echo form_close(); ?>
                                             </div>
                                         </div>
                                         <hr />

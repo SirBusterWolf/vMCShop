@@ -90,7 +90,7 @@
                                         <div class="col-lg-8 col-md-12 col-xs-12 text-center">
                                             <div class="form-group label-floating is-empty text-left">
                                                 <label class="control-label">Nazwa użytkownika</label>
-                                                <input type="text" name="userName" class="form-control">
+                                                <input type="text" name="userName" class="form-control" required>
                                                 <span class="material-input"></span>
                                             </div>
                                             <br />

@@ -89,12 +89,12 @@
                                         <div class="col-lg-6 col-md-12 col-xs-12 text-center">
                                             <div class="form-group label-floating is-empty text-left">
                                                 <label class="control-label">Nazwa usługi</label>
-                                                <input type="text" name="serviceName" class="form-control">
+                                                <input type="text" name="serviceName" class="form-control" required>
                                                 <span class="material-input"></span>
                                             </div>
                                             <br />
                                             <div class="btn-group bootstrap-select">
-                                                <select name="serviceServer" class="selectpicker" data-style="select-with-transition" title="Wybierz serwer" data-size="7" tabindex="-98">
+                                                <select name="serviceServer" class="selectpicker" data-style="select-with-transition" title="Wybierz serwer" data-size="7" tabindex="-98" required>
                                                     <option disabled=""> Wybierz serwer</option>
 
                                                     <?php foreach ($servers as $server): ?>
@@ -108,12 +108,12 @@
                                             <br />
                                             <div class="form-group text-left">
                                                 <label>Opis usługi</label>
-                                                <textarea id="serviceDesc" name="serviceDesc" class="form-control"></textarea>
+                                                <textarea id="serviceDesc" name="serviceDesc" class="form-control" required></textarea>
                                                 <span class="material-input"></span>
                                             </div>
                                             <br />
                                             <div class="form-group text-left">
-                                                <input type="file" id="serviceImage" name="serviceImage" style="cursor: pointer;" accept="image/*">
+                                                <input type="file" id="serviceImage" name="serviceImage" style="cursor: pointer;" accept="image/*" required>
                                                 <div class="input-group">
                                                     <span class="input-group-btn input-group-sm">
                                                         <button type="button" class="btn btn-success">
@@ -156,7 +156,7 @@
                                             </div>
                                             <div class="form-group label-floating is-empty text-left">
                                                 <label class="control-label">Komendy</label>
-                                                <textarea name="serviceCommands" class="form-control"></textarea>
+                                                <textarea name="serviceCommands" class="form-control" required></textarea>
                                                 <span class="material-input"></span>
                                             </div>
                                             <br />
@@ -174,7 +174,7 @@
                                         <p><strong>Kanał SMS</strong> - Jest to też treść SMSa. Na <a class="flatly-success-text link" href="#smschannel">zdjęciu</a> zostało zaznaczone miejsce gdzie możesz go znaleźć. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
                                         <p><strong>ID kanału SMS</strong> - Na <a class="flatly-success-text link" href="#smschannelid">zdjęciu</a> zostało zaznaczone miejsce gdzie możesz je znaleźć. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
                                         <p><strong>Numer SMS</strong> - Decyduje on o tym ile będzie kosztować usługa. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
-                                        <p><strong>Koszt PayPal</strong> - Cena usługi przy płatności PayPal.</p>
+                                        <p><strong>Koszt PayPal</strong> - Cena usługi przy płatności PayPal. (Jeżeli nie chcesz korzystać z płatności PayPal dla tej usługi pozostaw to pole puste)</p>
                                         <p><strong>Komendy</strong> - Komendy, które zostaną wysłane na serwer po dokonaniu płatności przez użytkownika. Zamiast nicku gracza użyj "{PLAYER}" (bez cudzysłowi). Komendy oddzielaj średnikiem bez znaków nowej lini.</p>
                                     </div>
                                 </div>

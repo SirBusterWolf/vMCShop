@@ -74,11 +74,11 @@
                                     <div class="col-xs-12 text-center">
                                         <div class="form-group label-floating text-left">
                                             <label class="control-label">Tytuł newsa</label>
-                                            <input type="text" name="newsTitle" class="form-control">
+                                            <input type="text" name="newsTitle" class="form-control" required>
                                         </div>
                                         <br />
                                         <div class="form-group text-left">
-                                            <input type="file" id="newsImage" name="newsImage" style="cursor: pointer;" accept="image/*">
+                                            <input type="file" id="newsImage" name="newsImage" style="cursor: pointer;" accept="image/*" required>
                                             <div class="input-group">
                                                     <span class="input-group-btn input-group-sm">
                                                         <button type="button" class="btn btn-success">
@@ -91,7 +91,7 @@
                                         <br />
                                         <div class="form-group text-left">
                                             <label>Treść newsa</label>
-                                            <textarea id="newsContent" name="newsContent" rows="15" class="form-control"></textarea>
+                                            <textarea id="newsContent" name="newsContent" rows="15" class="form-control" required></textarea>
                                             <span class="material-input"></span>
                                         </div>
                                         <br />

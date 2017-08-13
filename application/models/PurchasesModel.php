@@ -26,4 +26,8 @@ class PurchasesModel extends CI_Model {
     public function getForServerLimit($serverId, $limit) {
         return $this->db->where('server', $serverId)->order_by('date', 'desc')->limit($limit)->get($this->table)->result_array();
     }
+
+    public function add($data) {
+        return $this->db->insert($this->table, $data);
+    }
 }

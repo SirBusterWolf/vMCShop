@@ -36,6 +36,7 @@ class Shop extends CI_Controller {
 
             /**  Body Section  */
 
+            $this->load->library('form_validation');
             $this->load->model('ServersModel');
             $this->load->model('ServicesModel');
             $this->load->helper('smsnumbers_helper');

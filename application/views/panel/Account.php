@@ -34,15 +34,15 @@
 
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Podaj aktualne hasło...</label>
-                                                        <input type="password" name="pass1" class="form-control">
+                                                        <input type="password" name="pass1" class="form-control" required>
                                                     </div>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Podaj nowe hasło...</label>
-                                                        <input type="password" name="pass2" class="form-control">
+                                                        <input type="password" name="pass2" class="form-control" required>
                                                     </div>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Powtórz nowe hasło...</label>
-                                                        <input type="password" name="pass3" class="form-control">
+                                                        <input type="password" name="pass3" class="form-control" required>
                                                     </div>
                                                     <div class="form-group text-center">
                                                         <button class="btn btn-success btn-lg"><i class="fa fa-check" aria-hidden="true"></i> Akceptuj<div class="ripple-container"></div></button>
@@ -63,7 +63,7 @@
                                                 <?php echo form_open_multipart(base_url('panel/account/changeAvatar')); ?>
 
                                                     <div class="form-group text-left">
-                                                        <input type="file" id="avfile" name="avfile" style="cursor: pointer;" accept="image/*">
+                                                        <input type="file" id="avfile" name="avfile" style="cursor: pointer;" accept="image/*" required>
                                                         <div class="input-group">
                                                         <span class="input-group-btn input-group-sm">
                                                             <button type="button" class="btn btn-success">
