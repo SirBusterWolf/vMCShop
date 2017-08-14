@@ -37,7 +37,9 @@ $config['voucher_lenght'] = 48;
 // Operator płatności SMS.
 // Dostępne:
 //   - MicroSMS
-$config['sms_operator'] = "MicroSMS";
+//   - LvlUp
+$config['sms_operator'] = "";
 
 // ID użytkownika w serwisie MicroSMS.pl
-$config['microsms_userid'] = "1337";
+$config['microsms_userid'] = "";
+$config['lvlup_userid'] = "";

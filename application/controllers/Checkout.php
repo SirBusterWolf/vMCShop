@@ -71,12 +71,17 @@ class Checkout extends CI_Controller {
                  if (!$response['value']) {
                      $_SESSION['messageDanger'] = $response['message'];
                  } else {
-                     $this->load->helper('smsnumbers_helper');
-
                      $allow = true;
-                     $data['method'] = "SMS";
-                     $data['info'] = "code:".$smsCode;
-                     $data['profit'] = 0.45 * getPriceNetto($service['sms_number']);
+                 }
+             } else if ($this->config->item('sms_operator') == "LvlUp") {
+                 $this->load->helper('payments/sms/lvlup_helper');
+
+                 $response = check($this->config->item('lvlup_userid'), $service['sms_number'], $smsCode);
+
+                 if (!$response['value']) {
+                     $_SESSION['messageDanger'] = $response['message'];
+                 } else {
+                     $allow = true;
                  }
              }
 
@@ -84,6 +89,11 @@ class Checkout extends CI_Controller {
                  redirect(base_url('shop?server=' . $serverName));
              }
 
+             $this->load->helper('smsnumbers_helper');
+
+             $data['method'] = "SMS";
+             $data['info'] = "code:".$smsCode;
+             $data['profit'] = 0.45 * getPriceNetto($service['sms_number'], $this->config->item('sms_operator'));
              $data['buyer'] = $userName;
              $data['service'] = $service['id'];
              $data['server'] = $server['id'];

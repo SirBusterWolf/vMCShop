@@ -16,7 +16,7 @@ class LogsModel extends CI_Model {
     }
 
     public function getBySection($section) {
-        return $this->db->where('section', $section)->order_by('id', 'desc')->get($this->table)->result_array();
+        return $this->db->where('section', $section)->order_by('id', 'desc')->limit(5)->get($this->table)->result_array();
     }
 
     public function add($data) {

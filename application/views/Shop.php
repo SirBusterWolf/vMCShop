@@ -74,7 +74,7 @@
 												<h4 class="card-title"><?php echo $service['name']; ?></h4>
                                                 <?php if (isset($service['sms_channel']) && isset($service['sms_channel_id']) && isset($service['sms_number'])): ?>
                                                     <button style="text-transform: none" type="button" class="btn btn-info">
-                                                            <i class="fa fa-mobile" aria-hidden="true"></i> SMS: <?php echo getPriceBrutto($service['sms_number']); ?> zł
+                                                            <i class="fa fa-mobile" aria-hidden="true"></i> SMS: <?php echo getPriceBrutto($service['sms_number'], $smsOperator); ?> zł
                                                     </button>
                                                 <?php endif; ?>
                                                 <?php if (isset($service['paypal_cost'])): ?>
@@ -157,7 +157,7 @@
                                     </div>
                                     <div class="tab-pane text-center" id="sms<?php echo $service['id']; ?>">
                                         <button style="text-transform: none" type="button" class="btn btn-info">
-                                            <i class="fa fa-usd" aria-hidden="true"></i> Koszt: <?php echo getPriceBrutto($service['sms_number']); ?> zł z VAT
+                                            <i class="fa fa-usd" aria-hidden="true"></i> Koszt: <?php echo getPriceBrutto($service['sms_number'], $smsOperator); ?> zł z VAT
                                         </button>
                                         <h6 style="text-transform: none;">
                                             Aby aktywować usługę, wyślij SMS o treści <strong><?php echo $service['sms_channel']; ?></strong> pod numer <strong><?php echo $service['sms_number']; ?></strong>.

@@ -41,7 +41,7 @@
                                                     <td><?php echo $service['server']; ?></td>
                                                     <td><?php echo ($service['sms_channel'] == null) ? "Brak" : $service['sms_channel']; ?></td>
                                                     <td><?php echo ($service['sms_channel_id'] == null) ? "Brak" : $service['sms_channel_id']; ?></td>
-                                                    <td><?php echo ($service['sms_number'] == null) ? "Brak" : $service['sms_number']; ?></td>
+                                                    <td><?php echo ($service['sms_number'] == null) ? "Brak" : $service['sms_number'] . " - " . getPriceNetto($service['sms_number'], $smsOperator) . "zł (" . getPriceBrutto($service['sms_number'], $smsOperator) . "zł z VAT)"; ?></td>
                                                     <td><?php echo ($service['paypal_cost'] == null) ? "Brak" : number_format(round($service['paypal_cost'], 2), 2, ',', ' ') . "zł"; ?></td>
                                                     <td><button class="btn btn-xs btn-info" style="margin: 0;" data-toggle="modal" data-target="#service<?php echo $service['id']; ?>"><i class="fa fa-search" aria-hidden="true"></i> Podgląd</button></td>
                                                     <td class="td-actions">
@@ -131,13 +131,13 @@
                                                 </div>
                                                 <br />
                                                 <div class="form-group label-floating is-empty text-left">
-                                                    <label class="control-label">Kanał SMS</label>
+                                                    <label class="control-label">Treść SMS</label>
                                                     <input type="text" name="serviceSmsChannel" class="form-control">
                                                     <span class="material-input"></span>
                                                 </div>
                                                 <br />
                                                 <div class="form-group label-floating is-empty text-left">
-                                                    <label class="control-label">ID kanału SMS</label>
+                                                    <label class="control-label">SMS pole dodatkowe</label>
                                                     <input type="text" name="serviceSmsChannelId" class="form-control">
                                                     <span class="material-input"></span>
                                                 </div>
@@ -148,7 +148,7 @@
 
                                                         <?php foreach ($smsnumbers as $number => $cost): ?>
 
-                                                            <option value="<?php echo $number; ?>"><?php echo $number; ?> - <?php echo $cost; ?>zł (<?php echo getPriceBrutto($number); ?>zł z VAT)</option>
+                                                            <option value="<?php echo $number; ?>"><?php echo $number; ?> - <?php echo $cost; ?>zł (<?php echo getPriceBrutto($number, $smsOperator); ?>zł z VAT)</option>
 
                                                         <?php endforeach; ?>
 
@@ -179,11 +179,24 @@
                                             <h6 style="text-transform: none; font-weight: bold;">Informacja:</h6>
                                             <p><strong>Serwer</strong> - Wybierz serwer, na ktorym ma zostać zrealizowana usługa po pomyślnym dokonaniu płatności.</p>
                                             <p><strong>Obrazek usługi</strong> - Maksymalna waga to 10MB. Maksymalne wymiary 360x360 pikseli.</p>
-                                            <p><strong>Kanał SMS</strong> - Jest to też treść SMSa. Na <a class="flatly-success-text link" href="#smschannel">zdjęciu</a> zostało zaznaczone miejsce gdzie możesz go znaleźć. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
-                                            <p><strong>ID kanału SMS</strong> - Na <a class="flatly-success-text link" href="#smschannelid">zdjęciu</a> zostało zaznaczone miejsce gdzie możesz je znaleźć. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
-                                            <p><strong>Numer SMS</strong> - Decyduje on o tym ile będzie kosztować usługa. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
                                             <p><strong>Koszt PayPal</strong> - Cena usługi przy płatności PayPal. (Jeżeli nie chcesz korzystać z płatności PayPal dla tej usługi pozostaw to pole puste)</p>
                                             <p><strong>Komendy</strong> - Komendy, które zostaną wysłane na serwer po dokonaniu płatności przez użytkownika. Zamiast nicku gracza użyj "{PLAYER}" (bez cudzysłowi). Komendy oddzielaj średnikiem bez znaków nowej lini.</p>
+                                            <br /><br />
+                                            <p><strong>Treść SMS</strong> -
+                                                <?php if ($smsOperator == "MicroSMS"): ?>
+                                                    Wprowadź w to pole "Kanał SMS" czyli treść SMSa. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)
+                                                <?php elseif ($smsOperator == "LvlUp"): ?>
+                                                    Pozostaw to pole puste.
+                                                <?php endif; ?>
+                                            </p>
+                                            <p><strong>SMS pole dodatkowe</strong> -
+                                                <?php if ($smsOperator == "MicroSMS"): ?>
+                                                    Wprowadź w to pole "ID Kanału SMS". (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)
+                                                <?php elseif ($smsOperator == "LvlUp"): ?>
+                                                    Pozostaw to pole puste.
+                                                <?php endif; ?>
+                                            </p>
+                                            <p><strong>Numer SMS</strong> - Decyduje on o tym ile będzie kosztować usługa. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
                                         </div>
 
                                     <?php endif; ?>

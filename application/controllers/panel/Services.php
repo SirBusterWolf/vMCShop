@@ -32,7 +32,8 @@ class Services extends CI_Controller {
         $this->load->helper('smsnumbers_helper');
 
         $services = $this->ServicesModel->getAll();
-        $bodyData['smsnumbers'] = getSmsNumbers();
+        $bodyData['smsOperator'] = $this->config->item('sms_operator');
+        $bodyData['smsnumbers'] = getSmsNumbers($bodyData['smsOperator']);
         $bodyData['servers'] = $this->ServersModel->getAll();
         $bodyData['services'] = array();
 
@@ -80,11 +81,22 @@ class Services extends CI_Controller {
             $data['server'] = $this->input->post('serviceServer');
             $data['name'] = $this->input->post('serviceName');
             $data['description'] = $this->input->post('serviceDesc');
-            $data['sms_channel'] = (($this->input->post('serviceSmsChannel') == null) || ($this->input->post('serviceSmsChannel') == "") ? null : $this->input->post('serviceSmsChannel'));
-            $data['sms_channel_id'] = (($this->input->post('serviceSmsChannelId') == null) || ($this->input->post('serviceSmsChannelId') == "") ? null : $this->input->post('serviceSmsChannelId'));
             $data['sms_number'] = (($this->input->post('serviceSmsNumber') == null) || ($this->input->post('serviceSmsNumber') == "") ? null : $this->input->post('serviceSmsNumber'));
             $data['paypal_cost'] = (($this->input->post('servicePaypalCost') == null) || ($this->input->post('servicePaypalCost') == "") ? null : $this->input->post('servicePaypalCost'));
             $data['commands'] = $this->input->post('serviceCommands');
+
+            if ($this->config->item('sms_operator') == "MicroSMS") {
+                $data['sms_channel'] = (($this->input->post('serviceSmsChannel') == null) || ($this->input->post('serviceSmsChannel') == "") ? null : $this->input->post('serviceSmsChannel'));
+                $data['sms_channel_id'] = (($this->input->post('serviceSmsChannelId') == null) || ($this->input->post('serviceSmsChannelId') == "") ? null : $this->input->post('serviceSmsChannelId'));
+            } else if ($this->config->item('sms_operator') == "LvlUp") {
+                if ($data['sms_number'] == null) {
+                    $data['sms_channel'] = null;
+                    $data['sms_channel_id'] = null;
+                } else {
+                    $data['sms_channel'] = "AP.HOSTMC";
+                    $data['sms_channel_id'] = "Nie dotyczy";
+                }
+            }
 
             $config['upload_path'] = './assets/images/services';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
