@@ -62,14 +62,25 @@ class Users extends CI_Controller {
             $password = random_string('alnum', 16);
             $data['password'] = password_hash($password, PASSWORD_DEFAULT);
             $data['avatar'] = base_url('assets/images/avatars/default-avatar.png');
+            $userName = $data['name'];
 
             if (!$this->User->add($data)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
                 redirect(base_url('panel/users'));
             }
 
-            $_SESSION['messageSuccess'] = "Pomyślnie utworzono nowego użytkownika o nazwie <strong>" . $data['name'] ."</strong>!";
-            $_SESSION['newUserInfo'] = "Dane logowania do ACP dla nowego użytkownika:<br />Nazwa użytkownika: <strong>" . $data['name'] . "</strong>, Hasło: <strong>" . $password ."</strong><br /><br />Wyślij te dane jak najszybciej do nowego administratora, ponieważ znikną po przeładowaniu strony!";
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Użytkownicy ACP";
+            $data['details'] = "Utworzono nowego <strong>użytkownika</strong> o nazwie <strong>" . $userName . "</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
+
+            $_SESSION['messageSuccess'] = "Pomyślnie utworzono nowego użytkownika o nazwie <strong>" . $userName ."</strong>!";
+            $_SESSION['newUserInfo'] = "Dane logowania do ACP dla nowego użytkownika:<br />Nazwa użytkownika: <strong>" . $userName . "</strong>, Hasło: <strong>" . $password ."</strong><br /><br />Wyślij te dane jak najszybciej do nowego administratora, ponieważ znikną po przeładowaniu strony!";
             redirect(base_url('panel/users'));
         } else {
             $_SESSION['messageDanger'] = "Proszę wypełnić wszystkie pola formularza!";
@@ -103,6 +114,16 @@ class Users extends CI_Controller {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
                 redirect(base_url('panel/users'));
             }
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Użytkownicy ACP";
+            $data['details'] = "Usunięto <strong>użytkownika</strong> o nazwie <strong>" . $user['name'] . "</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Pomyślnie usunięto użytkownika o nazwie <strong>" . $user['name'] . "</strong>!";
             redirect(base_url('panel/users'));

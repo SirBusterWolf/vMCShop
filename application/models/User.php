@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed!');
 
 class User extends CI_Model {
 
-    public $table = "users";
+    public $table = "vmcs_users";
 
     public function getAll() {
         return $this->db->order_by('id')->get($this->table)->result_array();

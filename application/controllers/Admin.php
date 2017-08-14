@@ -72,11 +72,22 @@ class Admin extends CI_Controller {
             $this->session->set_userdata('name', $user['name']);
             $this->session->set_userdata('avatar', $user['avatar']);
 
-            $data['lastIP'] = $this->input->ip_address();
-            if ($data['lastIP'] = "::1") $data['lastIP'] = "127.0.0.1";
+            $data['lastIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
+            if ($data['lastIP'] == "::1") $data['lastIP'] = "127.0.0.1";
+            $ip = $data['lastIP'];
             $data['lastLogin'] = time();
 
             $this->User->update($user['name'], $data);
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Logowanie";
+            $data['details'] = $ip;
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Zalogowano pomyślnie! Witaj w panelu administratora " . $user['name'] . "!";
             redirect(base_url('panel/dashboard'));

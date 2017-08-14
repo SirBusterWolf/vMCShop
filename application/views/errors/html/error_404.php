@@ -70,7 +70,7 @@
 
                     <p>
 
-                        Oczywiście. Możesz napisać maila do autora tej strony <a target="_blank" href="mailto:kontakt@verlikylos.pro">kontakt@verlikylos.eu</a> lub skontaktować się z nim na serwerze TeamSpeak3 <a href="ts3server:ts.verlikylos.pro">ts.verlikylos.pro</a>
+                        Oczywiście. Możesz napisać maila do autora tej strony <a target="_blank" href="mailto:kontakt@verlikylos.pro">kontakt@verlikylos.pro</a> lub skontaktować się z nim przy pomocy komunikatora <a href="https://t.me/Verlikylos">Telegram</a>.
 
                     </p>
 

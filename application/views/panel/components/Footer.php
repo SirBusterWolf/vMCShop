@@ -111,8 +111,8 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/chartist.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/bootstrap-notify.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/material-dashboard.js'); ?>"></script>
-        <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=6yrw30toe976aik69zmb9x5t9aklhf3dvizjpc9md8rzy6a6'></script>
-        <script type="text/javascript" src='http://demos.creative-tim.com/material-dashboard-pro/assets/js/jquery.select-bootstrap.js'></script>
+        <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script type="text/javascript" src='<?php echo base_url('assets/js/jquery.select-bootstrap.js'); ?>'></script>
         <script type="text/javascript">
             $('.sidebar-wrapper').css('max-height', window.innerHeight-294);
             $('.content').css('min-height', window.innerHeight-155);

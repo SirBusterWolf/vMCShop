@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/vMCS';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,4 +522,5 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+$config['installer'] = false;
 $config['script_version'] = '1.6';

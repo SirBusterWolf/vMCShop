@@ -10,13 +10,13 @@
 
     <?php $this->load->view('components/Navigation'); ?>
 
-    <div class="header header-filter" id="header">
+    <div class="header header-filter" id="header" style="background-image: url('<?php echo $this->config->item('page_header_image'); ?>');">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <div class="brand-material">
-                        <h1>vMCShop.pro</h1>
-                        <h3>Nowy wymiar automatycznego sklepu Minecraft!</h3>
+                        <h1><?php echo $this->config->item('page_header_title'); ?></h1>
+                        <h3><?php echo $this->config->item('page_header_subtitle'); ?></h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +49,11 @@
                         <?php echo form_open(base_url('admin/login')); ?>
                             <div class="form-group label-floating text-left">
                                 <label class="control-label">Podaj login...</label>
-                                <input type="text" name="login" class="form-control" />
+                                <input type="text" name="login" class="form-control" required />
                             </div>
                             <div class="form-group label-floating text-left">
                                 <label class="control-label">Podaj hasło...</label>
-                                <input type="password" name="pass" class="form-control" />
+                                <input type="password" name="pass" class="form-control" required />
                             </div>
                             <br />
                             <button type="submit" class="btn btn-success-o"><i class="fa fa-sign-in" aria-hidden="true"></i> Zaloguj się</button>

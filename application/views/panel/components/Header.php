@@ -2,8 +2,7 @@
 <html lang="pl">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="TO-DO" />
-        <meta name="keywords" content="najlepszy, sklep, minecraft, verlikylos, vmc, shop, vmcshop, www, item, shop, itemshop, psc, pay, safe, card, paysafecard, pay, pal, paypal, sms, premium" />
+        <link rel="icon" type="image/png" href="<?php echo $this->config->item('page_favicon'); ?>"/>
         <meta name="author" content="Verlikylos" />
         <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">

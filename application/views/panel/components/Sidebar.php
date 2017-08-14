@@ -64,17 +64,6 @@
                     <p>Logi</p>
                 </a>
             </li>
-
-            <li>
-                &nbsp;
-            </li>
-
-            <li <?php echo ($this->uri->rsegment('1') == "settings") ? 'class="active"' : ''; ?>>
-                <a <?php echo ($this->uri->rsegment('1') == "settings") ? 'href="#"' : 'href="'.base_url("panel/settings").'"'; ?>>
-                    <i class="fa fa-gears" aria-hidden="true"></i>
-                    <p>Ustawienia Strony</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

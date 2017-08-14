@@ -113,7 +113,7 @@
 
                                 <?php if (!$servers): ?>
 
-                                <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Brak serwerów!</h3>
+                                <h3 class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Brak serwerów!</h3>
 
                                 <?php else: ?>
 
@@ -164,7 +164,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-left">Pomoc techniczna:</td>
-                                            <td class="text-right">admin@verlikylos.pro</td>
+                                            <td class="text-right">kontakt@verlikylos.pro</td>
                                         </tr>
                                         <tr>
                                             <td class="text-left">Wersja:</td>
@@ -204,6 +204,11 @@
                                                 <?php endforeach; ?>
 
                                             </ul>
+											
+										<?php else: ?>
+										
+											<ul class="nav nav-tabs" data-tabs="tabs">
+											</ul>
 
                                         <?php endif; ?>
 
@@ -263,6 +268,8 @@
                                                                         <td class="text-center"><span class="label label-warning">SMS Premium</span></td>
                                                                     <?php elseif ($purchase['method'] == "PayPal"): ?>
                                                                         <td class="text-center"><span class="label label-info">PayPal</span></td>
+                                                                    <?php elseif ($purchase['method'] == "Voucher"): ?>
+                                                                        <td class="text-center"><span class="label label-danger">Voucher</span></td>
                                                                     <?php endif; ?>
 
                                                                     <td class="text-center"><?php echo $purchase['profit']; ?> PLN</td>
@@ -296,35 +303,34 @@
                                 <p class="category">Ostatnie logowania do panelu</p>
                             </div>
                             <div class="card-content table-responsive">
-                                <table class="table table-hover table-striped table-responsive">
-                                    <thead class="text-success">
-                                    <th class="text-center">Użytkownik</th>
-                                    <th class="text-center">Adres IP</th>
-                                    <th class="text-center">Data</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="text-center">Verlikylos</td>
-                                        <td class="text-center">127.0.0.1</td>
-                                        <td class="text-center">10 minut temu</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">ArganPL</td>
-                                        <td class="text-center">192.168.0.1</td>
-                                        <td class="text-center">2 godziny temu</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">Vanderbeer</td>
-                                        <td class="text-center">124.25.64.93</td>
-                                        <td class="text-center">5 dni temu</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">NNitro</td>
-                                        <td class="text-center">37.128.52.3</td>
-                                        <td class="text-center">Ponad tydzień temu</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <?php if (!$logs): ?>
+
+                                    <h3 style="margin-bottom: 20px;" class="text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Brak Logów!</h3>
+
+                                <?php else: ?>
+
+                                    <table class="table table-hover table-striped table-responsive">
+                                        <thead class="text-success">
+                                            <th class="text-center">Użytkownik</th>
+                                            <th class="text-center">Adres IP</th>
+                                            <th class="text-center">Data</th>
+                                            </thead>
+                                        <tbody>
+
+                                            <?php foreach ($logs as $log): ?>
+
+                                                <tr>
+                                                    <td class="text-center"><?php echo $log['user']; ?></td>
+                                                    <td class="text-center"><?php echo $log['details']; ?></td>
+                                                    <td class="text-center"><?php echo formatDate($log['date']); ?></td>
+                                                </tr>
+
+                                            <?php endforeach; ?>
+
+                                        </tbody>
+                                    </table>
+
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

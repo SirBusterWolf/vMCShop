@@ -10,13 +10,13 @@
 		
 		<?php $this->load->view('components/Navigation'); ?>
 		
-		<div class="header header-filter" id="header">
+		<div class="header header-filter" id="header" style="background-image: url('<?php echo $this->config->item('page_header_image'); ?>');">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center">
 						<div class="brand-material">
-							<h1>vMCShop.pro</h1>
-							<h3>Nowy wymiar automatycznego sklepu Minecraft!</h3>
+							<h1><?php echo $this->config->item('page_header_title'); ?></h1>
+							<h3><?php echo $this->config->item('page_header_subtitle'); ?></h3>
 						</div>
 					</div>
 				</div>

@@ -29,10 +29,12 @@ class Dashboard extends CI_Controller {
         $this->load->model('ServersModel');
         $this->load->model('ServicesModel');
         $this->load->model('PurchasesModel');
+        $this->load->model('LogsModel');
         $this->load->model('User');
         $this->load->helper('date');
 
         $purchases = $this->PurchasesModel->getAll();
+        $bodyData['logs'] = $this->LogsModel->getBySection('Logowanie');
         $profit = 0;
 
         $todayTimestamp = time();

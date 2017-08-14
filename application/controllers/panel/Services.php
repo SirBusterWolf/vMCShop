@@ -70,36 +70,36 @@ class Services extends CI_Controller {
         $this->form_validation->set_rules('serviceName', 'serviceName', 'required|trim');
         $this->form_validation->set_rules('serviceServer', 'serviceServer', 'required|trim');
         $this->form_validation->set_rules('serviceDesc', 'serviceDesc', 'required|trim');
-        $this->form_validation->set_rules('serviceSmsChannel', 'serviceSmsChannel', 'required|trim');
-        $this->form_validation->set_rules('serviceSmsChannelId', 'serviceSmsChannelId', 'required|trim');
-        $this->form_validation->set_rules('serviceSmsNumber', 'serviceSmsNumber', 'required|trim');
-        $this->form_validation->set_rules('servicePaypalCost', 'servicePaypalCost', 'required|trim');
+        $this->form_validation->set_rules('serviceSmsChannel', 'serviceSmsChannel', 'trim');
+        $this->form_validation->set_rules('serviceSmsChannelId', 'serviceSmsChannelId', 'trim');
+        $this->form_validation->set_rules('serviceSmsNumber', 'serviceSmsNumber', 'trim');
+        $this->form_validation->set_rules('servicePaypalCost', 'servicePaypalCost', 'trim');
         $this->form_validation->set_rules('serviceCommands', 'serviceCommands', 'required|trim');
 
         if ($this->form_validation->run() === TRUE) {
             $data['server'] = $this->input->post('serviceServer');
             $data['name'] = $this->input->post('serviceName');
             $data['description'] = $this->input->post('serviceDesc');
-            $data['sms_channel'] = $this->input->post('serviceSmsChannel');
-            $data['sms_channel_id'] = $this->input->post('serviceSmsChannelId');
-            $data['sms_number'] = $this->input->post('serviceSmsNumber');
-            $data['paypal_cost'] = $this->input->post('servicePaypalCost');
+            $data['sms_channel'] = (($this->input->post('serviceSmsChannel') == null) || ($this->input->post('serviceSmsChannel') == "") ? null : $this->input->post('serviceSmsChannel'));
+            $data['sms_channel_id'] = (($this->input->post('serviceSmsChannelId') == null) || ($this->input->post('serviceSmsChannelId') == "") ? null : $this->input->post('serviceSmsChannelId'));
+            $data['sms_number'] = (($this->input->post('serviceSmsNumber') == null) || ($this->input->post('serviceSmsNumber') == "") ? null : $this->input->post('serviceSmsNumber'));
+            $data['paypal_cost'] = (($this->input->post('servicePaypalCost') == null) || ($this->input->post('servicePaypalCost') == "") ? null : $this->input->post('servicePaypalCost'));
             $data['commands'] = $this->input->post('serviceCommands');
-
-            $this->load->helper('string');
 
             $config['upload_path'] = './assets/images/services';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 10240;
             $config['max_width'] = 360;
             $config['max_height'] = 360;
-            $config['file_name'] = random_string('alnum', 16);
+            $config['encrypt_name'] = TRUE;
+            $serviceName = $data['name'];
 
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('serviceImage')) {
 
-                $data['image'] = $this->upload->data('full_path');
+                $uploadData = $this->upload->data();
+                $data['image'] = base_url('assets/images/services/' . $uploadData['file_name']);
 
             } else {
 
@@ -116,7 +116,21 @@ class Services extends CI_Controller {
                 redirect(base_url('panel/services'));
             }
 
-            $_SESSION['messageSuccess'] = "Pomyślnie utworzono usługę o nazwie <strong>" . $data['name'] . "</strong>!";
+            $this->load->model('ServersModel');
+
+            $server = $this->ServersModel->getByID($data['server']);
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Usługi";
+            $data['details'] = "Użytkownik utworzył <strong>usługę</strong> o nazwie <strong>" . $serviceName . "</strong> dla serwera <strong>" . $server['name'] . "</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
+
+            $_SESSION['messageSuccess'] = "Pomyślnie utworzono usługę o nazwie <strong>" . $serviceName . "</strong> dla serwera <strong>" . $server['name'] . "</strong>!";
             redirect(base_url('panel/services'));
         } else {
             $_SESSION['messageDanger'] = "Proszę wypełnić wszystkie pola formularza!";
@@ -145,6 +159,16 @@ class Services extends CI_Controller {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
                 redirect(base_url('panel/services'));
             }
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Usługi";
+            $data['details'] = "Użytkownik usunał <strong>usługę</strong> o nazwie <strong>" . $service['name'] . "</strong> (ID:" . $service['id'] . ")";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Pomyślnie usunięto usługę o nazwie <strong>" . $service['name'] . " (ID:" . $service['id'] . ")</strong>!";
             redirect(base_url('panel/services'));

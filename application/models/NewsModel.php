@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed!');
 
 class NewsModel extends CI_Model {
 
-    public $table = "news";
+    public $table = "vmcs_news";
 
     public function getByID($id) {
         return $this->db->where('id', $id)->get($this->table)->row_array();

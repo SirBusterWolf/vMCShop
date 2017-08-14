@@ -10,13 +10,13 @@
 		
 		<?php $this->load->view('components/Navigation'); ?>
 		
-		<div class="header header-filter" id="header">
+		<div class="header header-filter" id="header" style="background-image: url('<?php echo $this->config->item('page_header_image'); ?>');">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center">
 						<div class="brand-material">
-							<h1>vMCShop.pro</h1>
-							<h3>Nowy wymiar automatycznego sklepu Minecraft!</h3>
+                            <h1><?php echo $this->config->item('page_header_title'); ?></h1>
+                            <h3><?php echo $this->config->item('page_header_subtitle'); ?></h3>
 						</div>
 					</div>
 				</div>
@@ -130,12 +130,14 @@
                                                     Opis Usługi
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="#sms<?php echo $service['id']; ?>" data-toggle="tab" aria-expanded="false">
-                                                    <i class="fa fa-mobile" aria-hidden="true"></i>
-                                                    Płatność SMS
-                                                </a>
-                                            </li>
+                                            <?php if (isset($service['sms_channel']) && isset($service['sms_channel_id']) && isset($service['sms_number'])): ?>
+                                                <li>
+                                                    <a href="#sms<?php echo $service['id']; ?>" data-toggle="tab" aria-expanded="false">
+                                                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                                                        Płatność SMS
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
                                             <?php if (isset($service['paypal_cost'])): ?>
                                                 <li>
                                                     <a href="#paypal<?php echo $service['id']; ?>" data-toggle="tab" aria-expanded="false">

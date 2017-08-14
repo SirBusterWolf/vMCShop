@@ -48,7 +48,7 @@
 
                                                     <tr class="text-center">
                                                         <td><?php echo $user['name']; ?></td>
-                                                        <td><?php echo ($user['lastIP']) ? $user['lastIP'] : 'Brak'; ?></td>
+                                                        <td><?php echo ($user['lastIP']) ? $user['lastIP'] : "Brak"; ?></td>
                                                         <td><?php echo ($user['lastLogin']) ? formatDate($user['lastLogin']) : 'Brak'; ?></td>
                                                         <td class="td-actions">
 

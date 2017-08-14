@@ -16,7 +16,7 @@
 			<a class="navbar-brand" href="#">
 				<div class="logo-container">
 					<div class="brand">
-						vMCShop
+						<?php echo $this->config->item('page_title'); ?>
 					</div>
 				</div>
 			</a>
@@ -33,6 +33,7 @@
                         <?php endforeach; ?>
 					</ul>
 				</li>
+                <li <?php echo ($this->uri->rsegment('1') == "voucher") ? 'class="active"' : ''; ?>><a href="<?php echo ($this->uri->rsegment('1') == "voucher") ? '#"' : base_url('voucher'); ?>"><i class="fa fa-key" aria-hidden="true"></i> Realizuj voucher</a></li>
 			</ul>
 		</div>
 	</div>

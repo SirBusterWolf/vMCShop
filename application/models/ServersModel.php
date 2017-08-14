@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed!');
 
 class ServersModel extends CI_Model {
 
-    public $table = "servers";
+    public $table = "vmcs_servers";
 
     public function getAll() {
         return $this->db->order_by('id')->get($this->table)->result_array();

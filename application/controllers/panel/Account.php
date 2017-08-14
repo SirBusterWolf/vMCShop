@@ -79,8 +79,18 @@ class Account extends CI_Controller {
 
             if (!$this->User->update($user['name'], $data)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
-                redirect(base_url('panel/users'));
+                redirect(base_url('panel/account'));
             }
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Ustawienia Konta";
+            $data['details'] = "Użytkownik zmienił <strong>swoje hasło</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Hasło zostało pomyślnie zmienione!";
             redirect(base_url('panel/account'));
@@ -93,14 +103,12 @@ class Account extends CI_Controller {
     public function changeAvatar() {
         if (!$this->session->userdata('logged')) redirect(base_url());
 
-        $this->load->helper('string');
-
         $config['upload_path'] = './assets/images/avatars';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = 10240;
         $config['max_width'] = 256;
         $config['max_height'] = 256;
-        $config['file_name'] = random_string('alnum', 16);
+        $config['encrypt_name'] = TRUE;
 
         $this->load->library('upload', $config);
 
@@ -108,14 +116,25 @@ class Account extends CI_Controller {
 
             $this->load->model('User');
 
-            $data['avatar'] = $this->upload->data('full_path');
+            $uploadData = $this->upload->data();
+            $data['avatar'] = base_url('assets/images/avatars/' . $uploadData['file_name']);
 
             if (!$this->User->update($_SESSION['name'], $data)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
-                redirect(base_url('panel/users'));
+                redirect(base_url('panel/account'));
             }
 
-            $_SESSION['avatar'] = $this->upload->data('full_path');
+            $_SESSION['avatar'] = base_url('assets/images/avatars/' . $uploadData['file_name']);
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Ustawienia Konta";
+            $data['details'] = "Użytkownik zmienił <strong>swój avatar</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Avatar został pomyślnie zmieniony!";
             redirect(base_url('panel/account'));

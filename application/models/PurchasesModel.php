@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed!');
 
 class PurchasesModel extends CI_Model {
 
-    public $table = "purchases";
+    public $table = "vmcs_purchases";
 
     public function getAll() {
         return $this->db->order_by('date', 'desc')->get($this->table)->result_array();

@@ -91,7 +91,7 @@
                                         <br />
                                         <div class="form-group text-left">
                                             <label>Treść newsa</label>
-                                            <textarea id="newsContent" name="newsContent" rows="15" class="form-control" required></textarea>
+                                            <textarea id="newsContent" name="newsContent" rows="15" class="form-control"></textarea>
                                             <span class="material-input"></span>
                                         </div>
                                         <br />

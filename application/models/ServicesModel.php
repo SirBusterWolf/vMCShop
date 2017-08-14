@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed!');
 
 class ServicesModel extends CI_Model {
 
-    public $table = "services";
+    public $table = "vmcs_services";
 
     public function getAll() {
         return $this->db->get($this->table)->result_array();

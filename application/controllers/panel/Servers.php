@@ -65,13 +65,24 @@ class Servers extends CI_Controller {
             $data['query_port'] = $this->input->post('serverQueryPort');
             $data['rcon_port'] = $this->input->post('serverRconPort');
             $data['rcon_pass'] = $this->input->post('serverRconPass');
+            $serverName = $data['name'];
 
             if (!$this->ServersModel->add($data)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
                 redirect(base_url('panel/servers'));
             }
 
-            $_SESSION['messageSuccess'] = "Pomyślnie dodano serwer o nazwie <strong>" . $data['name'] ."</strong>!";
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Serwery";
+            $data['details'] = "Użytkownik dodał <strong>serwer</strong> o nazwie <strong>" . $serverName . "</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
+
+            $_SESSION['messageSuccess'] = "Pomyślnie dodano serwer o nazwie <strong>" . $serverName ."</strong>!";
             redirect(base_url('panel/servers'));
         } else {
             $_SESSION['messageDanger'] = "Proszę wypełnić wszystkie pola formularza!";
@@ -100,6 +111,16 @@ class Servers extends CI_Controller {
                 $_SESSION['messageDanger'] = "Wystąpił błąd podczas łączenia z bazą danych!";
                 redirect(base_url('panel/servers'));
             }
+
+            unset($data);
+
+            $data['user'] = $_SESSION['name'];
+            $data['section'] = "Serwery";
+            $data['details'] = "Użytkownik usunał <strong>serwer</strong> o nazwie <strong>" . $server['name'] . "</strong>";
+            $data['date'] = time();
+
+            $this->load->model('LogsModel');
+            $this->LogsModel->add($data);
 
             $_SESSION['messageSuccess'] = "Pomyślnie usunięto serwer o nazwie <strong>" . $server['name'] . "</strong>!";
             redirect(base_url('panel/servers'));
