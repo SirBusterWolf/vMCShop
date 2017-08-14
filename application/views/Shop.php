@@ -184,10 +184,19 @@
                                             </div>
                                         </div>
                                         <hr />
-                                        <img class="img-responsive" src="<?php echo base_url('assets/images/microsms.png'); ?>" alt="MicroSMS.pl" />
-                                        <p>
-                                            Płatności zapewnia firma <a class="link-reverse" href="http://microsms.pl/">MicroSMS</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://microsms.pl/partner/documents/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="http://microsms.pl/customer/complaint/">formularza reklamacyjnego</a>.
-                                        </p>
+                                        <div class="text-center">
+                                        <?php if ($smsOperator == "MicroSMS"): ?>
+                                            <img class="img-responsive" src="<?php echo base_url('assets/images/microsms.png'); ?>" alt="MicroSMS.pl" />
+                                            <p>
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://microsms.pl/">MicroSMS</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://microsms.pl/partner/documents/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="http://microsms.pl/customer/complaint/">formularza reklamacyjnego</a>.
+                                            </p>
+                                        <?php elseif ($smsOperator == "LvlUp"): ?>
+                                            <img class="img-responsive center-block" src="<?php echo base_url('assets/images/logo_dotpay.jpg'); ?>" alt="DotPay.pl" />
+                                            <p>
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://dotpay.pl/">DotPay</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://www.dotpay.pl/regulamin-serwisow-sms-premium/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://www.dotpay.pl/kontakt/uslugi-sms-premium/">formularza reklamacyjnego</a>.
+                                            </p>
+                                        <?php endif; ?>
+                                        </div>
                                     </div>
                                     <?php if (isset($service['paypal_cost'])): ?>
                                         <div class="tab-pane text-center" id="paypal<?php echo $service['id']; ?>">
