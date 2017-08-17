@@ -12,13 +12,6 @@ class Checkout extends CI_Controller {
     public function __construct() {
         parent::__construct();
     }
-
-    public function testrcon() {
-        $this->load->helper('rcon_helper');
-
-        rconCommand(array("broadcast chuj", "broadcast siema {PLAYER}"), "Verlikylos", "localhost", "25575", "darek124");
-
-    }
     
     public function sms() {
         $this->load->library('form_validation');
