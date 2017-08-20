@@ -35,7 +35,7 @@ class Voucher extends CI_Controller {
         
         $bodyData['servers'] = $this->ServersModel->getAll();
         
-        $this->load->view('Voucher', $b);
+        $this->load->view('Voucher', $bodyData);
 
 
         /**  Footer Section  */
