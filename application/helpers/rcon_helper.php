@@ -18,12 +18,11 @@ function rconCommand($commands, $player, $ip, $rconPort, $rconPass) {
         foreach ($commands as $command) {
             $Query->Rcon(str_replace('{PLAYER}', $player, $command));
         }
-        
+    
+        return array('value' => true, 'message' => 'Polecenia zostały pomyślnie wysłane na serwer');
     } catch (Exception $e) {
         return array('value' => false, 'message' => 'Wystąpił błąd podczas komunikacji z serwerem!');
     } finally {
         $Query->Disconnect();
-        
-        return array('value' => true, 'message' => 'Polecenia zostały pomyślnie wysłane na serwer');
     }
 }
