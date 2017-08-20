@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed!');
 
+use xPaw\MinecraftPing;
+use xPaw\MinecraftPingException;
+use xPaw\SourceQuery\SourceQuery;
+
 /**
  * Created with ♥ by Verlikylos on 02.05.2017 23:38.
  * Visit www.verlikylos.pro for more.
@@ -25,13 +29,13 @@ class Home extends CI_Controller {
 	
 		
 		/**  Body Section  */
-
+    
+        require_once(APPPATH.'libraries/MinecraftPing.php');
+        require_once(APPPATH.'libraries/MinecraftPingException.php');
 		$this->load->model('ServersModel');
 		$this->load->model('NewsModel');
 		$this->load->model('PurchasesModel');
 		$this->load->model('ServicesModel');
-
-		$this->load->library('Minecraftquery');
 
 		$this->load->helper('date');
 
@@ -51,17 +55,22 @@ class Home extends CI_Controller {
                     array_push($purchasesAfterServer, $purchase);
                 }
             }
-
-            $q = new minecraftQuery();
-
+    
             try {
-                $q->connect($server['ip'], $server['query_port'], 3);
-
-                if ($q->isOnline()) {
-                    $server['status'] = $q->getInfo();
+                $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                $result = $Query->Query();
+                $server['status']['Players'] = $result['players']['online'];
+                $server['status']['MaxPlayers'] = $result['players']['max'];
+            } catch (MinecraftPingException $e) {
+                try {
+                    $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                    $result = $Query->QueryOldPre17();
+                    $server['status']['Players'] = $result['players']['online'];
+                    $server['status']['MaxPlayers'] = $result['players']['max'];
+                } catch (MinecraftPingException $e) {
+                    // echo $e->getMessage();
                 }
-
-            } catch (minecraftQueryException $e) {}
+            }
 
             array_push($bodyData['servers'], $server);
         }

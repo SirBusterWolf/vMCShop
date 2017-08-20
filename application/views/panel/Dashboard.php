@@ -249,29 +249,12 @@
 
                                                         <?php foreach ($purchases as $purchase): ?>
 
-                                                            <?php if ($purchase['server'] == $server['id']): ?>
+                                                            <?php if ($purchase['server'] == $server['name']): ?>
 
                                                                 <tr>
                                                                     <td class="text-center"><?php echo $purchase['buyer']; ?></td>
-
-                                                                    <?php foreach ($services as $service): ?>
-
-                                                                        <?php if ($purchase['service'] == $service['id']): ?>
-
-                                                                            <td class="text-center"><?php echo $service['name']; ?></td>
-
-                                                                        <?php endif; ?>
-
-                                                                    <?php endforeach; ?>
-
-                                                                    <?php if ($purchase['method'] == "SMS"): ?>
-                                                                        <td class="text-center"><span class="label label-warning">SMS Premium</span></td>
-                                                                    <?php elseif ($purchase['method'] == "PayPal"): ?>
-                                                                        <td class="text-center"><span class="label label-info">PayPal</span></td>
-                                                                    <?php elseif ($purchase['method'] == "Voucher"): ?>
-                                                                        <td class="text-center"><span class="label label-danger">Voucher</span></td>
-                                                                    <?php endif; ?>
-
+                                                                    <td class="text-center"><?php echo $purchase['service']; ?></td>
+                                                                    <td class="text-center"><?php echo $purchase['method']; ?></td>
                                                                     <td class="text-center"><?php echo $purchase['profit']; ?> PLN</td>
                                                                 </tr>
 

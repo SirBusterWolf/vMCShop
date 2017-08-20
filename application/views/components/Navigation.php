@@ -24,15 +24,22 @@
 		<div class="collapse navbar-collapse" id="navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li <?php echo ($this->uri->rsegment('1') == "home") ? 'class="active"' : ''; ?>><a href="<?php echo ($this->uri->rsegment('1') == "home") ? '#"' : base_url(); ?>"><i class="fa fa-home" aria-hidden="true"></i> Strona Główna</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sklep <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li class="dropdown-header">Wybierz serwer</li>
-                        <?php foreach ($servers as $server): ?>
-                            <li><a href="<?php echo base_url('shop?server=' . $server['name']); ?>">Serwer <?php echo $server['name']; ?></a></li>
-                        <?php endforeach; ?>
-					</ul>
-				</li>
+                <?php $serversCount = count($servers); ?>
+                <?php if ($serversCount == 1): ?>
+                    <?php foreach ($servers as $server): ?>
+                        <li <?php echo ($this->uri->rsegment('1') == "shop") ? 'class="active"' : ''; ?>><a href="<?php echo ($this->uri->rsegment('1') == "shop") ? '#"' : base_url('shop?server=' . $server['name']); ?>"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sklep</a></li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Sklep <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Wybierz serwer</li>
+                            <?php foreach ($servers as $server): ?>
+                                <li><a href="<?php echo base_url('shop?server=' . $server['name']); ?>">Serwer <?php echo $server['name']; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
                 <li <?php echo ($this->uri->rsegment('1') == "voucher") ? 'class="active"' : ''; ?>><a href="<?php echo ($this->uri->rsegment('1') == "voucher") ? '#"' : base_url('voucher'); ?>"><i class="fa fa-key" aria-hidden="true"></i> Realizuj voucher</a></li>
 			</ul>
 		</div>

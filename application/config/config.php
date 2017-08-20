@@ -522,5 +522,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['installer'] = false;
-$config['script_version'] = '1.6.1';
+$config['script_version'] = '1.6.2';

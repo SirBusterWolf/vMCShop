@@ -49,11 +49,11 @@
                         <?php echo form_open(base_url('admin/login')); ?>
                             <div class="form-group label-floating text-left">
                                 <label class="control-label">Podaj login...</label>
-                                <input type="text" name="login" class="form-control" required />
+                                <input type="text" name="login" class="form-control" required autocomplete="off" />
                             </div>
                             <div class="form-group label-floating text-left">
                                 <label class="control-label">Podaj hasło...</label>
-                                <input type="password" name="pass" class="form-control" required />
+                                <input type="password" name="pass" class="form-control" required autocomplete="off" />
                             </div>
                             <br />
                             <button type="submit" class="btn btn-success-o"><i class="fa fa-sign-in" aria-hidden="true"></i> Zaloguj się</button>

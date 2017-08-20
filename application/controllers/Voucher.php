@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed!');
 
+use xPaw\MinecraftPing;
+use xPaw\MinecraftPingException;
+
 /**
  * Created with ♥ by Verlikylos on 14.08.2017 17:19.
  * Visit www.verlikylos.pro for more.
@@ -28,7 +31,11 @@ class Voucher extends CI_Controller {
 
         /**  Body Section  */
 
-        $this->load->view('Voucher');
+        $this->load->model('ServersModel');
+        
+        $bodyData['servers'] = $this->ServersModel->getAll();
+        
+        $this->load->view('Voucher', $b);
 
 
         /**  Footer Section  */
@@ -72,16 +79,22 @@ class Voucher extends CI_Controller {
                 $_SESSION['messageDanger'] = "Wystąpił błąd, spróbuj ponownie później!";
                 redirect(base_url('voucher'));
             }
-
-            $this->load->library('Minecraftquery');
-
-            $q = new minecraftQuery();
-
+    
             try {
-                $q->connect($server['ip'], $server['query_port'], 3);
-            } catch (minecraftQueryException $e) {
-                $_SESSION['messageDanger'] = "Serwer, na którym próbujesz zrealizować voucher jest aktualnie wyłączony. Zapraszamy później!";
-                redirect(base_url('voucher'));
+                $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                $result = $Query->Query();
+                $server['status']['Players'] = $result['players']['online'];
+                $server['status']['MaxPlayers'] = $result['players']['max'];
+            } catch (MinecraftPingException $e) {
+                try {
+                    $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                    $result = $Query->QueryOldPre17();
+                    $server['status']['Players'] = $result['players']['online'];
+                    $server['status']['MaxPlayers'] = $result['players']['max'];
+                } catch (MinecraftPingException $e) {
+                    $_SESSION['messageDanger'] = "Serwer, na którym próbujesz wykorzystać voucher jest aktualnie wyłączony. Zapraszamy później!";
+                    redirect(base_url('voucher' ));
+                }
             }
 
             $data['buyer'] = $userName;

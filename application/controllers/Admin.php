@@ -29,8 +29,12 @@ class Admin extends CI_Controller {
 
 
         /**  Body Section  */
+    
+        $this->load->model('ServersModel');
+    
+        $bodyData['servers'] = $this->ServersModel->getAll();
 
-        $this->load->view('Login');
+        $this->load->view('Login', $bodyData);
 
 
         /**  Footer Section  */

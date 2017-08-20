@@ -5,18 +5,25 @@
  * Copyright © vMCShop 2017
  */
 
-require_once(APPPATH.'libraries/Rcon.class.php');
+require APPPATH.'libraries/SourceQuery/bootstrap.php';
 
 function rconCommand($commands, $player, $ip, $rconPort, $rconPass) {
-    $rcon = new \thedudeguy\Rcon($ip, $rconPort, $rconPass, 3);
-
-    if ($rcon->connect()) {
+    $Query = new \xPaw\SourceQuery\SourceQuery();
+    
+    try {
+        $Query->Connect($ip, $rconPort, 1, \xPaw\SourceQuery\SourceQuery::SOURCE);
+        
+        $Query->SetRconPassword($rconPass);
+        
         foreach ($commands as $command) {
-            $rcon->send_Command(str_replace('{PLAYER}', $player, $command));
+            $Query->Rcon(str_replace('{PLAYER}', $player, $command));
         }
-    } else {
+        
+    } catch (Exception $e) {
         return array('value' => false, 'message' => 'Wystąpił błąd podczas komunikacji z serwerem!');
+    } finally {
+        $Query->Disconnect();
+        
+        return array('value' => true, 'message' => 'Polecenia zostały pomyślnie wysłane na serwer');
     }
-
-    return array('value' => true, 'message' => 'Polecenia zostały pomyślnie wysłane na serwer');
 }

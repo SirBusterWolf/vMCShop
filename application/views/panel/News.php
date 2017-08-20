@@ -65,7 +65,7 @@
 
                             <div class="card">
                                 <div class="card-header" data-background-color="primary">
-                                    <h4 style="margin-bottom: 0; margin-top: 0;" class="title"><i class="fa fa-plus-square" aria-hidden="true"></i> Dodaj serwer</h4>
+                                    <h4 style="margin-bottom: 0; margin-top: 0;" class="title"><i class="fa fa-plus-square" aria-hidden="true"></i> Dodaj news</h4>
                                 </div>
                                 <div class="card-content">
 

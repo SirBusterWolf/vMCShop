@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed!');
 
+use xPaw\MinecraftPing;
+use xPaw\MinecraftPingException;
+
 /**
  * Created with ♥ by Verlikylos on 13.08.2017 22:50.
  * Visit www.verlikylos.pro for more.
@@ -12,7 +15,7 @@ class Checkout extends CI_Controller {
     public function __construct() {
         parent::__construct();
     }
-    
+
     public function sms() {
         $this->load->library('form_validation');
 
@@ -40,16 +43,25 @@ class Checkout extends CI_Controller {
                 $_SESSION['messageDanger'] = "Wystąpił błąd, spróbuj jeszcze raz!";
                 redirect(base_url('shop?server=' . $serverName));
             }
-
-            $this->load->library('Minecraftquery');
-
-            $q = new minecraftQuery();
-
+    
+            require_once(APPPATH.'libraries/MinecraftPing.php');
+            require_once(APPPATH.'libraries/MinecraftPingException.php');
+    
             try {
-                $q->connect($server['ip'], $server['query_port'], 3);
-            } catch (minecraftQueryException $e) {
-                $_SESSION['messageDanger'] = "Serwer, na którym próbujesz zakupić usługę jest aktualnie wyłączony. Zapraszamy później!";
-                redirect(base_url('shop?server=' . $serverName));
+                $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                $result = $Query->Query();
+                $server['status']['Players'] = $result['players']['online'];
+                $server['status']['MaxPlayers'] = $result['players']['max'];
+            } catch (MinecraftPingException $e) {
+                try {
+                    $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                    $result = $Query->QueryOldPre17();
+                    $server['status']['Players'] = $result['players']['online'];
+                    $server['status']['MaxPlayers'] = $result['players']['max'];
+                } catch (MinecraftPingException $e) {
+                    $_SESSION['messageDanger'] = "Serwer, na którym próbujesz zakupić usługę jest aktualnie wyłączony. Zapraszamy później!";
+                    redirect(base_url('shop?server=' . $serverName));
+                }
             }
 
             $this->config->load('settings');

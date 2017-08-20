@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed!');
 
+use xPaw\MinecraftPing;
+use xPaw\MinecraftPingException;
+
 /**
  * Created with ♥ by Verlikylos on 25.06.2017 13:43.
  * Visit www.verlikylos.pro for more.
@@ -32,9 +35,19 @@ class Dashboard extends CI_Controller {
         $this->load->model('LogsModel');
         $this->load->model('User');
         $this->load->helper('date');
+        require_once(APPPATH.'libraries/MinecraftPing.php');
+        require_once(APPPATH.'libraries/MinecraftPingException.php');
 
         $purchases = $this->PurchasesModel->getAll();
         $bodyData['logs'] = $this->LogsModel->getBySection('Logowanie');
+        $bodyData['serversCount'] = $this->ServersModel->count();
+        $bodyData['purchasesCount'] = $this->PurchasesModel->count();
+        $bodyData['usersCount'] = $this->User->count();
+        $bodyData['servers'] = array();
+        $bodyData['purchases'] = array();
+        $servers = $this->ServersModel->getAll();
+        $services = $this->ServicesModel->getAll();
+        $serverPurchases = array();
         $profit = 0;
 
         $todayTimestamp = time();
@@ -127,40 +140,57 @@ class Dashboard extends CI_Controller {
         }
 
         $bodyData['profit'] = number_format(round($profit, 2), 2, ',', ' ');
-
-        $bodyData['serversCount'] = $this->ServersModel->count();
-        $bodyData['purchasesCount'] = $this->PurchasesModel->count();
-        $bodyData['usersCount'] = $this->User->count();
-
-        $this->load->library('Minecraftquery');
-
-        $servers = $this->ServersModel->getAll();
-        $bodyData['servers'] = array();
-        $bodyData['purchases'] = array();
-
+        
         foreach ($servers as $server) {
-            $q = new minecraftQuery();
-
+    
             try {
-                $q->connect($server['ip'], $server['query_port'], 3);
-
-                if ($q->isOnline()) {
-                    $server['status'] = $q->getInfo();
+                $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                $result = $Query->Query();
+                $server['status']['Players'] = $result['players']['online'];
+                $server['status']['MaxPlayers'] = $result['players']['max'];
+                array_push($bodyData['servers'], $server);
+            } catch (MinecraftPingException $e) {
+                try {
+                    $Query = new MinecraftPing($server['ip'], $server['query_port']);
+                    $result = $Query->QueryOldPre17();
+                    $server['status']['Players'] = $result['players']['online'];
+                    $server['status']['MaxPlayers'] = $result['players']['max'];
+                    array_push($bodyData['servers'], $server);
+                } catch (MinecraftPingException $e) {
+                    // echo $e->getMessage();
                 }
-
-            } catch (minecraftQueryException $e) {
-                // echo $e->getMessage();
             }
-
-            array_push($bodyData['servers'], $server);
-
-            $serverPurchases = $this->PurchasesModel->getForServerLimit($server['id'], 5);
-
-            foreach ($serverPurchases as $purch) {
-                array_push($bodyData['purchases'], $purch);
+            
+            foreach ($this->PurchasesModel->getForServerLimit($server['id'], 5) as $serv) {
+                array_push($serverPurchases, $serv);
             }
-
-            $bodyData['services'] = $this->ServicesModel->getAll();
+        }
+    
+        foreach ($servers as $server) {
+        
+            for ($i = 0; $i < count($serverPurchases); $i++) {
+                if ($serverPurchases[$i]['server'] == $server['id']) {
+                    $serverPurchases[$i]['server'] = $server['name'];
+                }
+            }
+        }
+    
+        foreach ($services as $service) {
+        
+            for ($i = 0; $i < count($serverPurchases); $i++) {
+                if ($serverPurchases[$i]['service'] == $service['id']) {
+                    $serverPurchases[$i]['service'] = $service['name'];
+                }
+            }
+        }
+    
+        foreach ($serverPurchases as $purchase) {
+            if (is_numeric($purchase['service'])) $purchase['service'] = "Usługa została usunięta!";
+            if (is_numeric($purchase['server'])) $purchase['server'] = "Serwer został usunięty!";
+            if ($purchase['method'] == "SMS") $purchase['method'] = "<span class='label label-warning'>SMS Premium</span>";
+            if ($purchase['method'] == "PayPal") $purchase['method'] = "<span class='label label-info'>PayPal</span>";
+            if ($purchase['method'] == "Voucher") $purchase['method'] = "<span class='label label-danger'>Voucher</span>";
+            array_push($bodyData['purchases'], $purchase);
         }
 
         $this->load->view('panel/Dashboard', $bodyData);
