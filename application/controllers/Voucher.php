@@ -80,6 +80,9 @@ class Voucher extends CI_Controller {
                 redirect(base_url('voucher'));
             }
     
+            require_once(APPPATH.'libraries/MinecraftPing.php');
+            require_once(APPPATH.'libraries/MinecraftPingException.php');
+    
             try {
                 $Query = new MinecraftPing($server['ip'], $server['query_port']);
                 $result = $Query->Query();
