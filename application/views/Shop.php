@@ -195,6 +195,16 @@
                                             <p>
                                                 Płatności zapewnia firma <a class="link-reverse" href="http://dotpay.pl/">DotPay</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://www.dotpay.pl/regulamin-serwisow-sms-premium/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://www.dotpay.pl/kontakt/uslugi-sms-premium/">formularza reklamacyjnego</a>.
                                             </p>
+                                        <?php elseif ($smsOperator == "Homepay"): ?>
+                                            <img class="img-responsive center-block" src="<?php echo base_url('assets/images/homepay.png'); ?>" alt="Homepay.pl" />
+                                            <p>
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://homepay.pl/">Homepay</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://homepay.pl/regulamin">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://homepay.pl/reklamacje">formularza reklamacyjnego</a>.
+                                            </p>
+                                        <?php elseif ($smsOperator == "Pukawka"): ?>
+                                            <img class="img-responsive center-block" src="<?php echo base_url('assets/images/pukawka.png'); ?>" alt="Pukawka.pl" />
+                                            <p>
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://pukawka.pl/">Pukawka</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://pukawka.pl/regulamin_sms.html">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://admin.pukawka.pl/?page=wallet&do=reklamacjasms">formularza reklamacyjnego</a>.
+                                            </p>
                                         <?php endif; ?>
                                         </div>
                                     </div>

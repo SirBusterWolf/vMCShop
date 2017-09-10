@@ -54,6 +54,11 @@ class Servers extends CI_Controller {
         if ($this->form_validation->run() === TRUE) {
             $data['name'] = $this->input->post('serverName');
 
+            if (preg_match("/[\'^£$%&*()}{@#~?><>,|=_+¬-]/", $data['name'])) {
+                $_SESSION['messageDanger'] = "Nazwa serwera zawiera niedozwolone znaki!";
+                redirect(base_url('panel/servers'));
+            }
+
             $this->load->model('ServersModel');
 
             if ($this->ServersModel->getByName($data['name'])) {

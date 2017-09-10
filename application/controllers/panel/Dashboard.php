@@ -148,18 +148,18 @@ class Dashboard extends CI_Controller {
                 $result = $Query->Query();
                 $server['status']['Players'] = $result['players']['online'];
                 $server['status']['MaxPlayers'] = $result['players']['max'];
-                array_push($bodyData['servers'], $server);
             } catch (MinecraftPingException $e) {
                 try {
                     $Query = new MinecraftPing($server['ip'], $server['query_port']);
                     $result = $Query->QueryOldPre17();
                     $server['status']['Players'] = $result['players']['online'];
                     $server['status']['MaxPlayers'] = $result['players']['max'];
-                    array_push($bodyData['servers'], $server);
                 } catch (MinecraftPingException $e) {
                     // echo $e->getMessage();
                 }
             }
+
+            array_push($bodyData['servers'], $server);
             
             foreach ($this->PurchasesModel->getForServerLimit($server['id'], 5) as $serv) {
                 array_push($serverPurchases, $serv);

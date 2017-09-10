@@ -88,6 +88,28 @@ class Checkout extends CI_Controller {
                  } else {
                      $allow = true;
                  }
+             } else if ($this->config->item('sms_operator') == "Homepay") {
+                 $this->load->helper('payments/sms/homepay_helper');
+
+                 $response = check($this->config->item('homepay_userid'), $this->config->item('homepay_userapikey'), $service['sms_channel_id'], $smsCode);
+
+                 if (!$response['value']) {
+                     $_SESSION['messageDanger'] = $response['message'];
+                 } else {
+                     $allow = true;
+                 }
+             } else if ($this->config->item('sms_operator') == "Pukawka") {
+                 $this->load->helper('payments/sms/pukawka_helper');
+                 $this->load->helper('smsnumbers_helper');
+
+                 $price = round(getPriceBrutto() * 0.53, 2);
+                 $response = check($this->config->item('pukawka_userapikey'), $price, $smsCode);
+
+                 if (!$response['value']) {
+                     $_SESSION['messageDanger'] = $response['message'];
+                 } else {
+                     $allow = true;
+                 }
              }
 
              if (!$allow) {

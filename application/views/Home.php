@@ -101,7 +101,13 @@
 
                                                             <?php else: ?>
 
-                                                                <?php $percent = round(($server['status']['Players'] / $server['status']['MaxPlayers']) * 100, 0); ?>
+                                                                <?php
+                                                                    if ($server['status']['MaxPlayers'] == 0) {
+                                                                        $percent = 0;
+                                                                    } else {
+                                                                        $percent = round(($server['status']['Players'] / $server['status']['MaxPlayers']) * 100, 0);
+                                                                    }
+                                                                ?>
 
                                                                 <div class="progress">
                                                                     <div class="progress-bar progress-bar-success" role="progressbar" style="width: <?php echo $percent; ?>%"></div>

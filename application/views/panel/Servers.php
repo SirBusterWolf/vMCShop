@@ -23,7 +23,7 @@
                                             <thead class="text-success text-center">
                                             <th class="text-center">Nazwa</th>
                                             <th class="text-center">Adres IP</th>
-                                            <th class="text-center">Port Query</th>
+                                            <th class="text-center">Port</th>
                                             <th class="text-center">Port RCON</th>
                                             <th class="text-center">Hasło RCON</th>
                                             <th class="text-center"></th>
@@ -92,7 +92,7 @@
                                             <span class="material-input"></span>
                                         </div>
                                         <div class="form-group label-floating is-empty text-left">
-                                            <label class="control-label">Port Query serwera</label>
+                                            <label class="control-label">Port serwera</label>
                                             <input type="text" name="serverQueryPort" class="form-control" required>
                                             <span class="material-input"></span>
                                         </div>
@@ -117,7 +117,7 @@
                                     <div class="col-lg-6 col-md-12 col-xs-12">
                                         <h6 style="text-transform: none; font-weight: bold;">Informacja:</h6>
                                         <p>
-                                            Wszelkie dane potrzebne do uzupełnienia formularza obok znajdziesz w pliku <strong>"server.properties"</strong> w katalogu głównym serwera. Kolejno zaczynając od Adresu IP będą to linijki o nazwach: <strong>"server-ip"</strong>, <strong>"query.port"</strong>, <strong>"rcon.port"</strong> oraz <strong>"rcon.password"</strong>.
+                                            Wszelkie dane potrzebne do uzupełnienia formularza obok znajdziesz w pliku <strong>"server.properties"</strong> w katalogu głównym serwera. Kolejno zaczynając od Adresu IP będą to linijki o nazwach: <strong>"server-ip"</strong>, <strong>"server-port"</strong>, <strong>"rcon.port"</strong> oraz <strong>"rcon.password"</strong>.
                                         </p>
                                     </div>
                                 </div>

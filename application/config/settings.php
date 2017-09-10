@@ -38,8 +38,20 @@ $config['voucher_lenght'] = 48;
 // Dostępne:
 //   - MicroSMS
 //   - LvlUp
+//   - Homepay
+//   - Pukawka
 $config['sms_operator'] = "";
 
 // ID użytkownika w serwisie MicroSMS.pl
 $config['microsms_userid'] = "";
+
+// ID użytkownika w serwisie LvlUp.pro
 $config['lvlup_userid'] = "";
+
+// ID użytkownika w serwisie Homepay.pl
+$config['homepay_userid'] = "";
+// klucz API użytkownika w serwisie Homepay.pl
+$config['homepay_userapikey'] = "";
+
+// klucz API użytkownika w serwisie Pukawka.pl
+$config['pukawka_userapikey'] = "";

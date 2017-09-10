@@ -96,6 +96,17 @@ class Services extends CI_Controller {
                     $data['sms_channel'] = "AP.HOSTMC";
                     $data['sms_channel_id'] = "Nie dotyczy";
                 }
+            } else if ($this->config->item('sms_operator') == "Homepay") {
+                $data['sms_channel'] = (($this->input->post('serviceSmsChannel') == null) || ($this->input->post('serviceSmsChannel') == "") ? null : $this->input->post('serviceSmsChannel'));
+                $data['sms_channel_id'] = (($this->input->post('serviceSmsChannelId') == null) || ($this->input->post('serviceSmsChannelId') == "") ? null : $this->input->post('serviceSmsChannelId'));
+            } else if ($this->config->item('sms_operator') == "Pukawka") {
+                if ($data['sms_number'] == null) {
+                    $data['sms_channel'] = null;
+                    $data['sms_channel_id'] = null;
+                } else {
+                    $data['sms_channel'] = "pukawka";
+                    $data['sms_channel_id'] = "Nie dotyczy";
+                }
             }
 
             $config['upload_path'] = './assets/images/services';

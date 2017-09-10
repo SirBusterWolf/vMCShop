@@ -40,7 +40,7 @@
                                                     <td><?php echo $service['name']; ?></td>
                                                     <td><?php echo $service['server']; ?></td>
                                                     <td><?php echo ($service['sms_channel'] == null) ? "Brak" : $service['sms_channel']; ?></td>
-                                                    <td><?php echo ($service['sms_channel_id'] == null) ? "Brak" : $service['sms_channel_id']; ?></td>
+                                                    <td><?php echo ($service['sms_channel_id'] == null) ? "Brak" : ($service['sms_channel_id'] == 0) ? "Nie dotyczy" : $service['sms_channel_id']; ?></td>
                                                     <td><?php echo ($service['sms_number'] == null) ? "Brak" : $service['sms_number'] . " - " . getPriceNetto($service['sms_number'], $smsOperator) . "zł (" . getPriceBrutto($service['sms_number'], $smsOperator) . "zł z VAT)"; ?></td>
                                                     <td><?php echo ($service['paypal_cost'] == null) ? "Brak" : number_format(round($service['paypal_cost'], 2), 2, ',', ' ') . "zł"; ?></td>
                                                     <td><button class="btn btn-xs btn-info" style="margin: 0;" data-toggle="modal" data-target="#service<?php echo $service['id']; ?>"><i class="fa fa-search" aria-hidden="true"></i> Podgląd</button></td>
@@ -145,6 +145,22 @@
                                                         <input type="text" name="serviceSmsChannelId" class="form-control">
                                                         <span class="material-input"></span>
                                                     </div>
+                                                <?php elseif ($smsOperator == "Homepay"): ?>
+                                                    <br />
+                                                    <div class="form-group label-floating is-empty text-left">
+                                                        <label class="control-label">Identyfikator SMS</label>
+                                                        <input type="text" name="serviceSmsChannel" class="form-control">
+                                                        <span class="material-input"></span>
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group label-floating is-empty text-left">
+                                                        <label class="control-label">ID konta SMS</label>
+                                                        <input type="text" name="serviceSmsChannelId" class="form-control">
+                                                        <span class="material-input"></span>
+                                                    </div>
+                                                <?php elseif ($smsOperator == "Pukawka"): ?>
+                                                    <input type="hidden" name="serviceSmsChannel" value="" />
+                                                    <input type="hidden" name="serviceSmsChannelId" value="" />
                                                 <?php endif; ?>
                                                 <br />
                                                 <div class="btn-group bootstrap-select">
@@ -193,6 +209,12 @@
                                             <?php elseif ($smsOperator == "MicroSMS"): ?>
                                                 <p><strong>Kanał SMS</strong> - Znajdziesz go w panelu na stronie MicroSMS. Jest jednocześnie treścią SMSa. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
                                                 <p><strong>ID kanału SMS</strong> - Znajdziesz go w panelu na stronie MicroSMS. Jest to numer identyfikacyjny kanału SMS. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
+                                                <p><strong>Numer SMS</strong> - Wybierz numer SMS jednocześnie określający koszt jego wysłania. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
+                                            <?php elseif ($smsOperator == "Homepay"): ?>
+                                                <p><strong>Identyfikator SMS</strong> - Znajdziesz go podczas przeglądania listy Twoich kont SMS Premium w panelu Homepay. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
+                                                <p><strong>ID konta SMS</strong> - Znajdziesz je podczas przeglądania listy Twoich kont SMS Premium w panelu Homepay. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw to pole puste)</p>
+                                                <p><strong>Numer SMS</strong> - Znajdziesz go podczas przeglądania listy Twoich kont SMS Premium w panelu Homepay. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
+                                            <?php elseif ($smsOperator == "Pukawka"): ?>
                                                 <p><strong>Numer SMS</strong> - Wybierz numer SMS jednocześnie określający koszt jego wysłania. (Jeżeli nie chcesz korzystać z płatności SMS Premium dla tej usługi pozostaw wartość domyślną)</p>
                                             <?php endif; ?>
                                         </div>

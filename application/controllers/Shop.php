@@ -45,6 +45,7 @@ class Shop extends CI_Controller {
             $bodyData['services'] = $this->ServicesModel->getForServer($server['id']);
             $bodyData['server'] = $server;
             $bodyData['smsOperator'] = $this->config->item('sms_operator');
+            $navServers = $bodyData['servers'];
 
             $this->load->view('Shop', $bodyData);
 
