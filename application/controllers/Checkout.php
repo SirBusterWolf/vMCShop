@@ -34,14 +34,14 @@ class Checkout extends CI_Controller {
 
             if (!$service = $this->ServicesModel->getByID($serviceId)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd, spróbuj jeszcze raz!";
-                redirect(base_url('shop?server=' . $serverName));
+                redirect(base_url('shop/' . $serverName));
             }
 
             $this->load->model('ServersModel');
 
             if (!$server = $this->ServersModel->getByName($serverName)) {
                 $_SESSION['messageDanger'] = "Wystąpił błąd, spróbuj jeszcze raz!";
-                redirect(base_url('shop?server=' . $serverName));
+                redirect(base_url('shop/' . $serverName));
             }
     
             require_once(APPPATH.'libraries/MinecraftPing.php');
@@ -60,7 +60,7 @@ class Checkout extends CI_Controller {
                     $server['status']['MaxPlayers'] = $result['players']['max'];
                 } catch (MinecraftPingException $e) {
                     $_SESSION['messageDanger'] = "Serwer, na którym próbujesz zakupić usługę jest aktualnie wyłączony. Zapraszamy później!";
-                    redirect(base_url('shop?server=' . $serverName));
+                    redirect(base_url('shop/' . $serverName));
                 }
             }
 
@@ -113,7 +113,7 @@ class Checkout extends CI_Controller {
              }
 
              if (!$allow) {
-                 redirect(base_url('shop?server=' . $serverName));
+                 redirect(base_url('shop/' . $serverName));
              }
 
              $this->load->helper('smsnumbers_helper');
@@ -142,10 +142,10 @@ class Checkout extends CI_Controller {
                 $_SESSION['messageDanger'] = 'Wystąpił błąd podczas łączenia się z serwerem. Zachowaj kod SMS i zgłoś się do Administratora!';
             }
 
-            redirect(base_url('shop?server=' . $serverName));
+            redirect(base_url('shop/' . $serverName));
         } else {
             if ($serverName = $this->input->post('servername')) {
-                redirect(base_url('shop?server=' . $serverName));
+                redirect(base_url('shop/' . $serverName));
             } else {
                 redirect(base_url());
             }
