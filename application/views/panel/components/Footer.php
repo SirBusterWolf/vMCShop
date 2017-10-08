@@ -18,7 +18,7 @@
 
         <?php if ($this->uri->rsegment('1') == "services"): ?>
 
-            <!-- Modals -->
+            <!-- Services Modals -->
             <?php foreach ($services as $service): ?>
 
                 <div class="modal fade" id="service<?php echo $service['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
@@ -105,6 +105,32 @@
 
         <?php endif; ?>
 
+        <?php if ($this->uri->rsegment('1') == "pages"): ?>
+
+            <!-- Modals -->
+            <?php foreach ($pages as $page): ?>
+
+                <div class="modal fade" id="page<?php echo $page['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog" style="width: 90% !important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <i class="material-icons">clear</i>
+                                </button>
+                                <h4 class="modal-title"><?php echo ((isset($page['icon'])) && ($page['icon'] != null)) ? '<i class="fa ' . $page['icon'] . '" aria-hidden="true"></i>' : ''; ?> <?php echo $page['title']; ?></h4>
+                                <hr />
+                            </div>
+                            <div class="modal-body">
+                                <?php echo $page['content']; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/jquery.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/material.min.js'); ?>"></script>
@@ -112,6 +138,7 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/bootstrap-notify.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/panel/material-dashboard.js'); ?>"></script>
         <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <!--<script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=TWÓJ_KLUCZ_API'></script>-->
         <script type="text/javascript" src='<?php echo base_url('assets/js/jquery.select-bootstrap.js'); ?>'></script>
         <script type="text/javascript">
             $('.sidebar-wrapper').css('max-height', window.innerHeight-294);
@@ -130,6 +157,21 @@
                     menubar: '',
                     toolbar: 'undo redo | format | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent link | fullscreen preview'
                 });
+            <?php endif; ?>
+
+            <?php if ($this->uri->rsegment('1') == "pages"): ?>
+            tinymce.init({
+                selector: '#pageContent',
+                browser_spellcheck: true,
+                branding: false,
+                plugins: [
+                    'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                    'save table contextmenu directionality emoticons template paste textcolor'
+                ],
+                menubar: '',
+                toolbar: 'undo redo | format | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent link | fullscreen preview'
+            });
             <?php endif; ?>
 
             <?php if ($this->uri->rsegment('1') == "news"): ?>

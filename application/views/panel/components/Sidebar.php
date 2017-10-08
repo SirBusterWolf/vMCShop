@@ -47,6 +47,12 @@
                     <p>Vouchery</p>
                 </a>
             </li>
+            <li <?php echo ($this->uri->rsegment('1') == "pages") ? 'class="active"' : ''; ?>>
+                <a <?php echo ($this->uri->rsegment('1') == "pages") ? 'href="#"' : 'href="'.base_url("panel/pages").'"'; ?>>
+                    <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                    <p>Własne strony</p>
+                </a>
+            </li>
 
             <li>
                 &nbsp;

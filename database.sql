@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Sie 2017, 20:46
--- Wersja serwera: 10.1.22-MariaDB
--- Wersja PHP: 7.1.4
+-- Czas generowania: 08 Paź 2017, 19:20
+-- Wersja serwera: 10.1.25-MariaDB
+-- Wersja PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `testvmcs`
+-- Baza danych: `vmcshop`
 --
 
 -- --------------------------------------------------------
@@ -48,6 +48,21 @@ CREATE TABLE `vmcs_news` (
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `vmcs_pages`
+--
+
+CREATE TABLE `vmcs_pages` (
+  `id` int(11) NOT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `link` int(1) DEFAULT '0',
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -121,7 +136,7 @@ CREATE TABLE `vmcs_users` (
 --
 
 INSERT INTO `vmcs_users` (`id`, `name`, `password`, `avatar`, `lastIP`, `lastLogin`) VALUES
-(1, 'Admin', '$2a$06$uPqQWGrapIYjZl3wSfxecuFbut/RiNKlCkvku6skzgWe4uTgjwOKW', 'https://vmcshop.pro/assets/images/avatars/76a1582a3f8d625ae4b5b8ca22e36f91.png', '127.0.0.1', '1502732862');
+(1, 'Admin', '$2a$06$4PH7hx5AX23KclP.ndkzKeF7xehEVYLMeMYtoMdEX.85s5oQEZSaC', 'https://vmcshop.pro/assets/images/avatars/default-avatar.png', '127.0.0.1', '1502732862');
 
 -- --------------------------------------------------------
 
@@ -151,6 +166,12 @@ ALTER TABLE `vmcs_logs`
 ALTER TABLE `vmcs_news`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `news_id_uindex` (`id`);
+
+--
+-- Indexes for table `vmcs_pages`
+--
+ALTER TABLE `vmcs_pages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vmcs_purchases`
@@ -191,37 +212,42 @@ ALTER TABLE `vmcs_vouchers`
 -- AUTO_INCREMENT dla tabeli `vmcs_logs`
 --
 ALTER TABLE `vmcs_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_news`
 --
 ALTER TABLE `vmcs_news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `vmcs_pages`
+--
+ALTER TABLE `vmcs_pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_purchases`
 --
 ALTER TABLE `vmcs_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_servers`
 --
 ALTER TABLE `vmcs_servers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_services`
 --
 ALTER TABLE `vmcs_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_users`
 --
 ALTER TABLE `vmcs_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_vouchers`
 --
 ALTER TABLE `vmcs_vouchers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

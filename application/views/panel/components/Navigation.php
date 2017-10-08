@@ -15,6 +15,7 @@
             <?php if ($this->uri->rsegment('1') == "news") echo '<a class="navbar-brand" href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Newsy</a>'; ?>
             <?php if ($this->uri->rsegment('1') == "purchases") echo '<a class="navbar-brand" href="#"><i class="fa fa-history" aria-hidden="true"></i> Historia zakupów</a>'; ?>
             <?php if ($this->uri->rsegment('1') == "vouchers") echo '<a class="navbar-brand" href="#"><i class="fa fa-key" aria-hidden="true"></i> Vouchery</a>'; ?>
+            <?php if ($this->uri->rsegment('1') == "pages") echo '<a class="navbar-brand" href="#"><i class="fa fa-file-code-o" aria-hidden="true"></i> Własne strony</a>'; ?>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">

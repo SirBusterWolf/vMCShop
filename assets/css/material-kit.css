@@ -1024,7 +1024,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   display: inline-block;
   width: 30px;
   height: 15px;
-  background-color: rgba(80, 80, 80, 0.7);
+  background-color: rgba(255, 0, 0, 0.7);
   border-radius: 15px;
   margin-right: 15px;
   transition: background 0.3s ease;
@@ -1038,14 +1038,14 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   background-color: #FFFFFF;
   border-radius: 20px;
   position: relative;
-  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 255, 0.4);
   left: -5px;
   top: -3px;
-  border: 1px solid rgba(0,0,0, .54);
+  border: 1px solid rgba(255,0,0, 0.9);
   transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
 .togglebutton label input[type=checkbox][disabled] + .toggle:after, .togglebutton label input[type=checkbox][disabled]:checked + .toggle:after {
-  background-color: #BDBDBD;
+  background-color: #FF0000;
 }
 .togglebutton label input[type=checkbox] + .toggle:active:after, .togglebutton label input[type=checkbox][disabled] + .toggle:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);

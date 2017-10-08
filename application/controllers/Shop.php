@@ -13,15 +13,13 @@ class Shop extends CI_Controller {
         parent::__construct();
     }
 	
-	public function index() {
+	public function index($serverName = null) {
 
         $this->benchmark->mark('code_start');
 
         $this->load->model('ServersModel');
 
-        $serverName = ($this->input->get('server', TRUE) != NULL) ? $this->input->get('server', TRUE) : NULL;
-
-        if ((!$serverName) || (!$server = $this->ServersModel->getByName($serverName))) {
+        if (($serverName == null) || (!$server = $this->ServersModel->getByName($serverName))) {
 
             $this->load->view('errors/html/error_404');
 
@@ -39,13 +37,14 @@ class Shop extends CI_Controller {
             $this->load->library('form_validation');
             $this->load->model('ServersModel');
             $this->load->model('ServicesModel');
+            $this->load->model('PagesModel');
             $this->load->helper('smsnumbers_helper');
 
             $bodyData['servers'] = $this->ServersModel->getAll();
             $bodyData['services'] = $this->ServicesModel->getForServer($server['id']);
             $bodyData['server'] = $server;
             $bodyData['smsOperator'] = $this->config->item('sms_operator');
-            $navServers = $bodyData['servers'];
+            $bodyData['pages'] = $this->PagesModel->getAll();
 
             $this->load->view('Shop', $bodyData);
 

@@ -16,11 +16,11 @@ $config['page_description'] = "Opis strony";
 // Tagi strony pozycjonujące ją w wyszukiwarce internetowej oddzielone przecinkami.
 $config['page_tags'] = "";
 
-// Link do ikony o wymiarach 16x16 pixeli. Wyświetlana ona jest obok nazwy karty przeglądarki.
-$config['page_favicon'] = "https://vmcshop.pro/assets/images/favicon.png";
+// Link do ikony o wymiarach 16x16 pixeli. Wyświetlana ona jest obok nazwy karty przeglądarki. (NAJLEPIEJ UZYC SIEZKI BEZWZGLEDNEJ DO OBRAZKA)
+$config['page_favicon'] = "http://[TWOJA DOMENA]/assets/images/favicon.png";
 
-// Link do tła nagłówka wyświetlanego na stronie głównej, w zakładce sklepu oraz w zakładce realizacji voucheru.
-$config['page_header_image'] = "assets/images/header_background.png";
+// Link do tła nagłówka wyświetlanego na stronie głównej, w zakładce sklepu oraz w zakładce realizacji voucheru. (NAJLEPIEJ UZYC SIEZKI BEZWZGLEDNEJ DO OBRAZKA)
+$config['page_header_image'] = "http://[TWOJA DOMENA]/assets/images/header_background.png";
 
 // Tekst wyświetlany w nagłówku strony.
 $config['page_header_title'] = "vMCShop.pro";
@@ -40,7 +40,7 @@ $config['voucher_lenght'] = 48;
 //   - LvlUp
 //   - Homepay
 //   - Pukawka
-$config['sms_operator'] = "";
+$config['sms_operator'] = "Pukawka";
 
 // ID użytkownika w serwisie MicroSMS.pl
 $config['microsms_userid'] = "";

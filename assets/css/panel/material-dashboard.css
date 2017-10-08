@@ -2646,7 +2646,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   display: inline-block;
   width: 30px;
   height: 15px;
-  background-color: rgba(80, 80, 80, 0.7);
+  background-color: rgb(245, 90, 78);
   border-radius: 15px;
   margin-right: 15px;
   transition: background 0.3s ease;
@@ -2664,6 +2664,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   left: -5px;
   top: -3px;
   border: 1px solid rgba(0,0,0, .54);
+  border-color: #2c3e50 !important;
   transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
 .togglebutton label input[type=checkbox][disabled] + .toggle:after, .togglebutton label input[type=checkbox][disabled]:checked + .toggle:after {
@@ -2676,7 +2677,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   left: 15px;
 }
 .togglebutton label input[type=checkbox]:checked + .toggle {
-  background-color: rgba(44, 62, 80, 0.7);
+  background-color: rgb(92, 184, 96);
 }
 .togglebutton label input[type=checkbox]:checked + .toggle:after {
   border-color: #2c3e50;

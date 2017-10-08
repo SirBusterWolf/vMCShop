@@ -36,6 +36,7 @@ class Home extends CI_Controller {
 		$this->load->model('NewsModel');
 		$this->load->model('PurchasesModel');
 		$this->load->model('ServicesModel');
+		$this->load->model('PagesModel');
 
 		$this->load->helper('date');
 
@@ -46,6 +47,7 @@ class Home extends CI_Controller {
         $purchasesAfterServer = array();
         $bodyData['purchases'] = array();
         $services = $this->ServicesModel->getAll();
+        $bodyData['pages'] = $this->PagesModel->getAll();
 
         foreach ($servers as $server) {
 
