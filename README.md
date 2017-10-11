@@ -1,4 +1,4 @@
-![vMCShop](https://vmcshop.pro/assets/images/vmcshop-standard.png)
+![vMCShop](https://vmcshop.pro/assets/images/vmcshop-github.png)
 
 Aktualna wersja: **1.6.4**
 
