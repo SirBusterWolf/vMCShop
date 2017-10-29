@@ -109,4 +109,4 @@ Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższ
 
 ### Licencja: **GNU GPLv3**
 
-[![Donate with PayPal](https://host.verlikylos.pro/images/donate-paypal.png)](https://www.paypal.me/Verlikylos)
+[![Donate with PayPal](https://host.verlikylos.pro/images/paypal-donate.png)](https://www.paypal.me/Verlikylos)
