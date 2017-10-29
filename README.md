@@ -4,6 +4,8 @@ Aktualna wersja: **1.6.4**
 
 [Instrukcja aktualizacji skryptu do najnowszej wersji](https://github.com/Verlikylos/vMCShop/wiki/Instrukcja-aktualizacji-skryptu-do-najnowszej-wersji)
 
+[Instrukcja instalacji na serwerze WWW](https://verlikylos.me/vmcshop-standard-instrukcja-instalacji-na-serwerze-www/)
+
 <hr>
 
 Demo: [Klik](https://vmcshop.pro/)
@@ -106,3 +108,5 @@ Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższ
  - Publikacja sklepu
 
 ### Licencja: **GNU GPLv3**
+
+[![Donate with PayPal](https://host.verlikylos.pro/images/donate-paypal.png)](https://www.paypal.me/Verlikylos)
