@@ -72,6 +72,7 @@ Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższ
  - Aktywne mod_rewrite
 
 ### Instalacja
+[Tutaj](https://verlikylos.me/vmcshop-standard-instrukcja-instalacji-na-serwerze-www/) możesz znaleźć dokładniejszy opis instalacji.
 
 1. Wgraj pliki na serwer www.
 2. Importuj plik ```database.sql``` do swojej bazy danych MySQL.
