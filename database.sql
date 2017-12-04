@@ -91,7 +91,7 @@ CREATE TABLE `vmcs_purchases` (
 CREATE TABLE `vmcs_servers` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `ip` varchar(16) NOT NULL,
+  `ip` varchar(255) NOT NULL,
   `query_port` int(11) NOT NULL,
   `rcon_port` int(11) NOT NULL,
   `rcon_pass` varchar(255) DEFAULT NULL
