@@ -36,7 +36,7 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Wybierz serwer</li>
                                 <?php foreach ($servers as $server): ?>
-                                    <li><a href="<?php echo base_url('shop?server=' . $server['name']); ?>">Serwer <?php echo $server['name']; ?></a></li>
+                                    <li><a href="<?php echo base_url('shop/' . $server['name']); ?>">Serwer <?php echo $server['name']; ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </li>
