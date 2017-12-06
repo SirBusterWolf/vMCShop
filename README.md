@@ -32,8 +32,11 @@ W razie jakichkolwiek pytań/wątpliwosci/problemów/błędów zapraszam do kont
 
 Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższej listy!
 
+### Donejtorzy
+- blackxxoj | 0.01 zł | Prestiż ( ͡° ͜ʖ ͡°)
+
 ### Lista serwisów używających skryptu vMCShop
-- Na razie brak :C
+- mcfrix.pl
 
 ### Obsługiwani operatorzy płatności
 - MicroSMS.pl

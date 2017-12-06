@@ -91,7 +91,7 @@ CREATE TABLE `vmcs_purchases` (
 CREATE TABLE `vmcs_servers` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `ip` varchar(16) NOT NULL,
+  `ip` varchar(255) NOT NULL,
   `query_port` int(11) NOT NULL,
   `rcon_port` int(11) NOT NULL,
   `rcon_pass` varchar(255) DEFAULT NULL
@@ -212,7 +212,7 @@ ALTER TABLE `vmcs_vouchers`
 -- AUTO_INCREMENT dla tabeli `vmcs_logs`
 --
 ALTER TABLE `vmcs_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_news`
 --
@@ -222,7 +222,7 @@ ALTER TABLE `vmcs_news`
 -- AUTO_INCREMENT dla tabeli `vmcs_pages`
 --
 ALTER TABLE `vmcs_pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_purchases`
 --
@@ -232,7 +232,7 @@ ALTER TABLE `vmcs_purchases`
 -- AUTO_INCREMENT dla tabeli `vmcs_servers`
 --
 ALTER TABLE `vmcs_servers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_services`
 --
@@ -242,7 +242,7 @@ ALTER TABLE `vmcs_services`
 -- AUTO_INCREMENT dla tabeli `vmcs_users`
 --
 ALTER TABLE `vmcs_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `vmcs_vouchers`
 --
