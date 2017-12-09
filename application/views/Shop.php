@@ -115,7 +115,7 @@
                                 <div class="alert-icon">
                                     <i class="material-icons">warning</i>
                                 </div>
-                                Pamiętaj aby być <strong>ONLINE</strong> na serwerze przy zakupie usługi! (Nie dotyczy unbanów, wejściówek, itd.)
+                                Pamiętaj, aby być <strong>ONLINE</strong> na serwerze przy zakupie usługi! (Nie dotyczy unbanów, wejściówek, itd.)
                                 Podczas zakupu przedmiotu zwolnij miejsce w ekwipunku!
                             </div>
                         </div>
@@ -188,22 +188,22 @@
                                         <?php if ($smsOperator == "MicroSMS"): ?>
                                             <img class="img-responsive" src="<?php echo base_url('assets/images/microsms.png'); ?>" alt="MicroSMS.pl" />
                                             <p>
-                                                Płatności zapewnia firma <a class="link-reverse" href="http://microsms.pl/">MicroSMS</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://microsms.pl/partner/documents/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="http://microsms.pl/customer/complaint/">formularza reklamacyjnego</a>.
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://microsms.pl/">MicroSMS</a>. Korzystanie z serwisu jest jednoznaczne z akceptacją <a class="link-reverse" href="http://microsms.pl/partner/documents/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="http://microsms.pl/customer/complaint/">formularza reklamacyjnego</a>.
                                             </p>
                                         <?php elseif ($smsOperator == "LvlUp"): ?>
                                             <img class="img-responsive center-block" src="<?php echo base_url('assets/images/logo_dotpay.jpg'); ?>" alt="DotPay.pl" />
                                             <p>
-                                                Płatności zapewnia firma <a class="link-reverse" href="http://dotpay.pl/">DotPay</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://www.dotpay.pl/regulamin-serwisow-sms-premium/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://www.dotpay.pl/kontakt/uslugi-sms-premium/">formularza reklamacyjnego</a>.
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://dotpay.pl/">DotPay</a>. Korzystanie z serwisu jest jednoznaczne z akceptacją <a class="link-reverse" href="http://www.dotpay.pl/regulamin-serwisow-sms-premium/">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://www.dotpay.pl/kontakt/uslugi-sms-premium/">formularza reklamacyjnego</a>.
                                             </p>
                                         <?php elseif ($smsOperator == "Homepay"): ?>
                                             <img class="img-responsive center-block" src="<?php echo base_url('assets/images/homepay.png'); ?>" alt="Homepay.pl" />
                                             <p>
-                                                Płatności zapewnia firma <a class="link-reverse" href="http://homepay.pl/">Homepay</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://homepay.pl/regulamin">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://homepay.pl/reklamacje">formularza reklamacyjnego</a>.
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://homepay.pl/">Homepay</a>. Korzystanie z serwisu jest jednoznaczne z akceptacją <a class="link-reverse" href="http://homepay.pl/regulamin">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://homepay.pl/reklamacje">formularza reklamacyjnego</a>. Numer infolinii: <a class="link-reverse" href="tel://+48222668525">+48 (22) 266 85 25</a>.
                                             </p>
                                         <?php elseif ($smsOperator == "Pukawka"): ?>
                                             <img class="img-responsive center-block" src="<?php echo base_url('assets/images/pukawka.png'); ?>" alt="Pukawka.pl" />
                                             <p>
-                                                Płatności zapewnia firma <a class="link-reverse" href="http://pukawka.pl/">Pukawka</a>. Korzystanie z serwisu jest jednozanczne z akceptacją <a class="link-reverse" href="http://pukawka.pl/regulamin_sms.html">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://admin.pukawka.pl/?page=wallet&do=reklamacjasms">formularza reklamacyjnego</a>.
+                                                Płatności zapewnia firma <a class="link-reverse" href="http://pukawka.pl/">Pukawka</a>. Korzystanie z serwisu jest jednoznaczne z akceptacją <a class="link-reverse" href="http://pukawka.pl/regulamin_sms.html">regulaminów</a>. Jeśli nie dostałeś kodu zwrotnego w ciągu 30 minut skorzystaj z <a class="link-reverse" href="https://admin.pukawka.pl/?page=wallet&do=reklamacjasms">formularza reklamacyjnego</a>.
                                             </p>
                                         <?php endif; ?>
                                         </div>
