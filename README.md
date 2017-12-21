@@ -23,6 +23,11 @@ Hasło: **password**
 ## Ważne
 Okej, można powiedzieć, że spowrotem wróciły mi chęci do tworzenia sklepu i zamiast robić płatną wersję skryptu (vMCShop Premium), postanowiłem wydać wersję 2.0 vMCShop Standard. Wygląd pozostanie mniej więcej ten sam, ale zostanie dodana dodatkowa funkcjonalność. Z racji na to, że mój czas jest ograniczony premiera odbędzie się najprawdopodobniej gdzieś w okolicach 20 stycznia 2018. Osoby, które chcą pomóc w testowaniu wersji alpha/beta zapraszam do kontaktu, linki poniżej.
 
+#### Aktualizacja
+Wrzuciłem już pierwsze demo wersji 2.0.0, można je obejrzeć [tutaj](https://standard.vmcshop.pro/). Aktualnie jest to sam frontend, ale mimo to czekam na jakieś propozycje, rady, pomysły itd., aby wersja 2.0.0 zaraz po premierze spełniała większość Waszych oczekiwań ;)
+
+<hr>
+
 Zapraszam do polubienia [FanPage](https://www.facebook.com/verlikylos), dzięki temu będę mial lepszy kontakt z Wami oraz szybciej dowiecie się o nowych aktualizacjach.
 
 **Zanim napiszesz do mnie w związku z jakimś błędem, sprawdź czy [tutaj](https://github.com/Verlikylos/vMCShop/wiki/Znane-b%C5%82%C4%99dy-i-sposoby-ich-rozwi%C4%85zywania) nie ma opisu jak go rozwiazać!**
