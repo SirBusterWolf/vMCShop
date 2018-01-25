@@ -1,5 +1,7 @@
 ![vMCShop](https://vmcshop.pro/assets/images/vmcshop-github.png)
 
+### Ta wersja nie jest już wspierana! Nowa dostępna będzie [tutaj](https://github.com/Verlikylos/vMCShop-Standard).
+
 Aktualna wersja: **1.6.4**
 
 [Instrukcja aktualizacji skryptu do najnowszej wersji](https://github.com/Verlikylos/vMCShop/wiki/Instrukcja-aktualizacji-skryptu-do-najnowszej-wersji)
