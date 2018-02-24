@@ -1,34 +1,10 @@
-![vMCShop](https://vmcshop.pro/assets/images/vmcshop-github.png)
-
 ### Ta wersja nie jest już wspierana! Nowa dostępna będzie [tutaj](https://github.com/Verlikylos/vMCShop-Standard).
 
-Aktualna wersja: **1.6.4**
-
-[Instrukcja aktualizacji skryptu do najnowszej wersji](https://github.com/Verlikylos/vMCShop/wiki/Instrukcja-aktualizacji-skryptu-do-najnowszej-wersji)
-
-[Instrukcja instalacji na serwerze WWW](https://verlikylos.me/vmcshop-standard-instrukcja-instalacji-na-serwerze-www/)
-
 <hr>
 
-Demo: [Klik](https://vmcshop.pro/)
-
-Demo ACP: [Klik](https://vmcshop.pro/admin)
-
-Login: **Admin**
-
-Hasło: **password**
-
-<hr>
+Wersja: **1.6.4**
 
 ### Ogłoszenia
-
-## Ważne
-Okej, można powiedzieć, że spowrotem wróciły mi chęci do tworzenia sklepu i zamiast robić płatną wersję skryptu (vMCShop Premium), postanowiłem wydać wersję 2.0 vMCShop Standard. Wygląd pozostanie mniej więcej ten sam, ale zostanie dodana dodatkowa funkcjonalność. Z racji na to, że mój czas jest ograniczony premiera odbędzie się najprawdopodobniej gdzieś w okolicach 20 stycznia 2018. Osoby, które chcą pomóc w testowaniu wersji alpha/beta zapraszam do kontaktu, linki poniżej.
-
-#### Aktualizacja
-Wrzuciłem już pierwsze demo wersji 2.0.0, można je obejrzeć [tutaj](https://standard.vmcshop.pro/). Aktualnie jest to sam frontend, ale mimo to czekam na jakieś propozycje, rady, pomysły itd., aby wersja 2.0.0 zaraz po premierze spełniała większość Waszych oczekiwań ;)
-
-<hr>
 
 Zapraszam do polubienia [FanPage](https://www.facebook.com/verlikylos), dzięki temu będę mial lepszy kontakt z Wami oraz szybciej dowiecie się o nowych aktualizacjach.
 
@@ -37,16 +13,6 @@ Zapraszam do polubienia [FanPage](https://www.facebook.com/verlikylos), dzięki 
 ### Opis
 
 Sklep oferuje obsługę wielu serwerów i usług, dodawanie newsów z obrazkami, realizację voucherów oraz tworzenie stron z własną zawartością. Dashboard ACP zawiera kilka podstawowych informacji takich jak ilosć sprzedanych usług czy aktualne zarobki. Znajduje się tam również wykres sprzedaży usług w bieżącym tygodniu, status serwerów podpiętych do skryptu, lista ostatnich zakupów oraz logowań do ACP. Panel sklepu obsługuje wiele kont, dlatego została dodana zakładka logów sklepu, aby móc sprawdzić co i kiedy dany użytkownik zrobił. Podczas realizacji usługi czy vouchera sprawdzane jest czy serwer, na którym komenda ma być wykonana jest aktualnie online.
-
-W razie jakichkolwiek pytań/wątpliwosci/problemów/błędów zapraszam do kontaktu [mailowego](mailto:kontakt@verlikylos.pro), przez mój [FanPage](https://www.facebook.com/verlikylos), Discord (Verlikylos#5640) lub przy pomocy komunikatora [Telegram](https://t.me/Verlikylos).
-
-Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższej listy!
-
-### Donejtorzy
-- blackxxoj | 0.01 zł | Prestiż ( ͡° ͜ʖ ͡°)
-
-### Lista serwisów używających skryptu vMCShop
-- mcfrix.pl
 
 ### Obsługiwani operatorzy płatności
 - MicroSMS.pl
@@ -85,7 +51,6 @@ Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższ
  - Aktywne mod_rewrite
 
 ### Instalacja
-[Tutaj](https://verlikylos.me/vmcshop-standard-instrukcja-instalacji-na-serwerze-www/) możesz znaleźć dokładniejszy opis instalacji.
 
 1. Wgraj pliki na serwer www.
 2. Importuj plik ```database.sql``` do swojej bazy danych MySQL.
@@ -122,5 +87,3 @@ Używasz tego skryptu sklepu? Napisz do mnie, a dodam Twoją stronę do poniższ
  - Publikacja sklepu
 
 ### Licencja: **GNU GPLv3**
-
-[![Donate with PayPal](https://host.verlikylos.pro/images/paypal-donate.png)](https://www.paypal.me/Verlikylos)
