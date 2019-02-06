@@ -1,4 +1,4 @@
-### Ta wersja nie jest już wspierana! Nowa dostępna będzie [tutaj](https://github.com/Verlikylos/vMCShop-Standard).
+### Ta wersja nie jest już wspierana! Nowa dostępna będzie [tutaj](https://github.com/vMCShop/vMCShop-Standard).
 
 <hr>
 
