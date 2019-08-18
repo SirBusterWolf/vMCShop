@@ -18,7 +18,10 @@ class Home extends CI_Controller {
     }
     
     public function index() {
-	
+	if (!file_exists("application/install.txt")){
+		redirect('/Install');
+		return;
+	}
 		$this->benchmark->mark('code_start');
     	
     	/**  Head Section  */
